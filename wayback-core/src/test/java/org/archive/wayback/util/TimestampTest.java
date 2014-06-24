@@ -40,7 +40,7 @@ public class TimestampTest extends TestCase {
 
 		String curYear = String.valueOf(Calendar.getInstance(TimeZone.getTimeZone("GMT")).get(Calendar.YEAR));
 		
-		assertEquals("padStart '1'","19960101000000",Timestamp.padStartDateStr("1"));
+		assertEquals("padStart '1'","19910101000000",Timestamp.padStartDateStr("1"));
 		assertEquals("padEnd '1'","19991231235959",Timestamp.padEndDateStr("1"));
 		assertEquals("padStart '2'","20000101000000",Timestamp.padStartDateStr("2"));
 		assertEquals("padEnd",curYear + "1231235959",Timestamp.padEndDateStr("2"));
@@ -61,20 +61,20 @@ public class TimestampTest extends TestCase {
 		assertEquals("padEnd","20040229235959",Timestamp.padEndDateStr("200402"));
 		assertEquals("padEnd","20030228235959",Timestamp.padEndDateStr("200302"));
 
-		assertEquals("padEnd","19960229235959",Timestamp.padEndDateStr("199602"));
-		assertEquals("padStart","19960201000000",Timestamp.padStartDateStr("199602"));
+		assertEquals("padEnd","19910229235959",Timestamp.padEndDateStr("199102"));
+		assertEquals("padStart","19910201000000",Timestamp.padStartDateStr("199102"));
 		
-		assertEquals("padStart","19960101000000",Timestamp.padStartDateStr("19960"));
-		assertEquals("padEnd","19960930235959",Timestamp.padEndDateStr("19960"));
+		assertEquals("padStart","19910101000000",Timestamp.padStartDateStr("19910"));
+		assertEquals("padEnd","19910930235959",Timestamp.padEndDateStr("19910"));
 		
-		assertEquals("padStart","19961001000000",Timestamp.padStartDateStr("19961"));
-		assertEquals("padEnd","19961231235959",Timestamp.padEndDateStr("19961"));
+		assertEquals("padStart","19911001000000",Timestamp.padStartDateStr("19911"));
+		assertEquals("padEnd","19911231235959",Timestamp.padEndDateStr("19911"));
 
-		assertEquals("padStart","19961001000000",Timestamp.padStartDateStr("19962"));
-		assertEquals("padEnd","19961231235959",Timestamp.padEndDateStr("19962"));
+		assertEquals("padStart","19911001000000",Timestamp.padStartDateStr("19912"));
+		assertEquals("padEnd","19911231235959",Timestamp.padEndDateStr("19912"));
 		
-		assertEquals("padStart","19960101000050",Timestamp.padStartDateStr("19960101000060"));
-		assertEquals("padEnd","19960101000050",Timestamp.padEndDateStr("19960101000060"));
+		assertEquals("padStart","19910101000050",Timestamp.padStartDateStr("19910101000060"));
+		assertEquals("padEnd","19910101000050",Timestamp.padEndDateStr("19910101000060"));
 		
 
 	}
