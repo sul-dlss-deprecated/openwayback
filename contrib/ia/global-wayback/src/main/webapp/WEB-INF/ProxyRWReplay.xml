@@ -59,7 +59,7 @@
     </property>
     <property name="maxRecords" value="100000" />
     <property name="addDefaults" value="false" />
-    <property name="earliestTimestamp" value="1996"/>    
+    <property name="earliestTimestamp" value="1991"/>    
   </bean>  
   
   <!-- 

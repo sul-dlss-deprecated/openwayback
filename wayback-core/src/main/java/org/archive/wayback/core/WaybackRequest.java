@@ -171,7 +171,7 @@ public class WaybackRequest {
 	 * 1) specified directly in request
 	 * 2) a partial REQUEST_DATE (earliest possible given a prefix)
 	 * 3) RequestParser default
-	 * 4) 14-digit representation of midnight Jan 1, 1996.
+	 * 4) 14-digit representation of midnight Jan 1, 1991.
 	 */
 	public static final String REQUEST_START_DATE = "startdate";
 

@@ -411,7 +411,7 @@
       &lt;bean class=&quot;org.archive.wayback.archivalurl.ArchivalUrlRequestParser&quot;
         init-method=&quot;init&quot;&gt;
         &lt;property name=&quot;maxRecords&quot; value=&quot;1000&quot; /&gt;
-        &lt;property name=&quot;earliestTimestamp&quot; value=&quot;1996&quot; /&gt;
+        &lt;property name=&quot;earliestTimestamp&quot; value=&quot;1991&quot; /&gt;
       &lt;/bean&gt;
     &lt;/property&gt;
 

@@ -39,7 +39,7 @@ public class Timestamp {
 
 	private final static String LOWER_TIMESTAMP_LIMIT = "10000000000000";
 	private final static String UPPER_TIMESTAMP_LIMIT = "29991939295959";
-	private final static String YEAR_LOWER_LIMIT      = "1996";
+	private final static String YEAR_LOWER_LIMIT      = "1991";
 	private final static String YEAR_UPPER_LIMIT      = 
 		String.valueOf(Calendar.getInstance(TimeZone.getTimeZone("GMT")).get(Calendar.YEAR));
 	private final static String MONTH_LOWER_LIMIT     = "01";
@@ -52,7 +52,7 @@ public class Timestamp {
 	private final static String SECOND_UPPER_LIMIT    = "59";
 	private final static String SECOND_LOWER_LIMIT    = "00";
 	
-	private final static int SSE_1996                 = 820454400;
+	private final static int SSE_1991                 = 662688000;
 
 	private final static String[] months = { "Jan", "Feb", "Mar", "Apr", "May",
 			"Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
@@ -309,7 +309,7 @@ public class Timestamp {
 			e.printStackTrace();
 			// TODO: This is certainly not the right thing, but padStartDateStr
 			// should ensure we *never* get here..
-			return new Date(SSE_1996);
+			return new Date(SSE_1991);
 		}
 	}
 	
@@ -458,6 +458,6 @@ public class Timestamp {
 	 * @return Timestamp object representing the earliest possible date.
 	 */
 	public static Timestamp earliestTimestamp() {
-		return new Timestamp(SSE_1996);
+		return new Timestamp(SSE_1991);
 	}
 }
