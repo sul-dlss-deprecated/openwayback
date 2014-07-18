@@ -13,6 +13,7 @@
 %><%@ page import="org.archive.wayback.util.partition.Partition"
 %><%@ page import="org.archive.wayback.util.partition.Partitioner"
 %><%@ page import="org.archive.wayback.util.partition.PartitionSize"
+%><%@ page import="org.archive.wayback.util.partition.size.*"
 %><%@ page import="org.archive.wayback.util.StringFormatter"
 %><jsp:include page="/WEB-INF/template/UI-header.jsp" flush="true" />
 <jsp:include page="/WEB-INF/template/CookieJS.jsp" flush="true" /><%
@@ -39,7 +40,7 @@ CaptureSearchResultPartitionMap map =
 	new CaptureSearchResultPartitionMap();
 Partitioner<CaptureSearchResult> partitioner = 
 	new Partitioner<CaptureSearchResult>(map);
-PartitionSize size = partitioner.getSize(searchStartDate,searchEndDate,13);
+PartitionSize size = new YearPartitionSize();// partitioner.getSize(searchStartDate,searchEndDate,13);
 List<Partition<CaptureSearchResult>> partitions = 
 	partitioner.getRange(size,searchStartDate,searchEndDate);
 
@@ -87,7 +88,7 @@ int numPartitions = partitions.size();
 
 
 <!--    RESULT COLUMN COUNTS -->
-   <tr bgcolor="#CCCCCC">
+   <!--tr bgcolor="#CCCCCC">
 <%
   for(int i = 0; i < numPartitions; i++) {
 	  Partition<CaptureSearchResult> partition = partitions.get(i);
