@@ -74,7 +74,11 @@ public class ValueGraphElements extends RectangularGraphElement {
 		int elX = Graph.xlateX(width, values.length, i);
 		int elW = Graph.xlateX(width, values.length, i+1) - elX;
 		int elY = height - valueHeight;
-		boolean hot = i == highlightValue;
+		boolean hot = false;
+		System.out.println(i+" "+highlightValue);
+		if(highlightValue>-1){
+			hot = true;
+		}
 		return new ValueGraphElement(x + elX, y + elY, elW, valueHeight, hot, config);
 	}
 	
