@@ -45,7 +45,7 @@ for (int year = 1991; year <= Calendar.getInstance().get(Calendar.YEAR); year++)
 BubbleCalendarData data = new BubbleCalendarData(results);
 
 String yearEncoded = data.getYearsGraphString(imgWidth,imgHeight);
-String yearImgUrl = graphJspPrefix + "jsp/graph.jsp?nomonth=1&graphdata=" + yearEncoded;
+String yearImgUrl = graphJspPrefix + "jsp/graph.jsp?graphdata=" + yearEncoded;
 
 // a Calendar object for doing days-in-week, day-of-week,days-in-month math:
 Calendar cal = BubbleCalendarData.getUTCCalendar();
