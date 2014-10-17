@@ -66,18 +66,18 @@ public class ToolBarData {
 	/** List<Part<CResult>> for months*/
 	public List<Partition<CaptureSearchResult>> monthPartitions;
 	
-	private static final PartitionSize yearSize = Partitioner.yearSize;
-	private static final PartitionSize monthSize = Partitioner.monthSize;
+	protected static final PartitionSize yearSize = Partitioner.yearSize;
+	protected static final PartitionSize monthSize = Partitioner.monthSize;
 
-	private static final CaptureSearchResultPartitionMap monthMap = 
+	protected static final CaptureSearchResultPartitionMap monthMap = 
 		new CaptureSearchResultPartitionMap();
-	private static final PartitionPartitionMap yearMap = 
+	protected static final PartitionPartitionMap yearMap = 
 		new PartitionPartitionMap();
 	
-	private static final Partitioner<Partition<CaptureSearchResult>> 
+	protected static final Partitioner<Partition<CaptureSearchResult>> 
 		yearPartitioner = 
 			new Partitioner<Partition<CaptureSearchResult>>(yearMap);
-	private static final Partitioner<CaptureSearchResult> monthPartitioner = 
+	protected static final Partitioner<CaptureSearchResult> monthPartitioner = 
 		new Partitioner<CaptureSearchResult>(monthMap);
 
 	/**

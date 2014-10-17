@@ -1,0 +1,494 @@
+/* Stanford Wayback styling */
+
+/* Stanford brand bar, including collapsible Feedback form */
+#brandbar {
+  min-height: 35px;
+}
+#brandbar .container {
+  padding: 0;
+}
+#brandbar #report-problem {
+  float: right;
+  font-family: "Helvetica","Arial",sans-serif;
+  font-size: 12px;
+  line-height: 18px;
+  margin-top: 9px;
+}
+#brandbar #report-problem a, #brandbar #report-problem input[type="submit"] {
+  color: #ddd;
+  font-size: 12px;
+  text-decoration: none;
+}
+#brandbar #report-problem .caret {
+  border-top-color: #ddd;
+}
+#brandbar #report-problem .btn-group {
+  display: inline-block;
+  font-family: "Helvetica","Arial",sans-serif;
+  font-size: inherit;
+}
+#brandbar #report-problem .btn-group .btn-mini {
+  border: none;
+  font-size: 12px;
+  padding: 0 3px 0 0;
+  text-shadow: none;
+  vertical-align: top;
+}
+#brandbar #report-problem .btn-group .dropdown-toggle {
+  box-shadow: none;
+  font-family: "Helvetica","Arial",sans-serif;
+  padding: 0 3px;
+}
+#brandbar #report-problem .btn-group .dropdown-toggle:active, #brandbar #report-problem .btn-group .dropdown-toggle:hover, #brandbar #report-problem .btn-group .dropdown-toggle:visited, #brandbar #report-problem .btn-group .dropdown-toggle:focus {
+  background-color: transparent;
+  outline-color: transparent;
+}
+#brandbar #report-problem .btn-group .dropdown-menu {
+  background-color: #fff;
+  border: 1px solid #999;
+  left: auto;
+  right: 0;
+}
+#brandbar #report-problem .btn-group .dropdown-menu li .button_to input[type="submit"], #brandbar #report-problem .btn-group .dropdown-menu li > a, #brandbar #report-problem .btn-group .dropdown-menu li > a:visited {
+  color: #555;
+  font-size: 0.9em;
+  padding: 2px 12px;
+}
+#brandbar #report-problem .btn-group .dropdown-menu li > a:hover, #brandbar #report-problem .btn-group .dropdown-menu li > a:focus,
+#brandbar #report-problem .btn-group .dropdown-menu li:hover, #brandbar #report-problem .btn-group .dropdown-menu li:focus,
+#brandbar #report-problem .btn-group .dropdown-menu li.signout:hover, #brandbar #report-problem .btn-group .dropdown-menu li.signout:focus {
+  background-color: #990000;
+  background-image: none;
+  color: #fff;
+}
+#brandbar #report-problem .btn-group .dropdown-menu li > a:hover .button_to .btn-link, #brandbar #report-problem .btn-group .dropdown-menu li > a:focus .button_to .btn-link,
+#brandbar #report-problem .btn-group .dropdown-menu li:hover .button_to .btn-link, #brandbar #report-problem .btn-group .dropdown-menu li:focus .button_to .btn-link,
+#brandbar #report-problem .btn-group .dropdown-menu li.signout:hover .button_to .btn-link, #brandbar #report-problem .btn-group .dropdown-menu li.signout:focus .button_to .btn-link {
+  color: #fff;
+}
+#brandbar #report-problem .btn-group .dropdown-menu li.divider:hover {
+  background-color: #e5e5e5;
+}
+#brandbar form.button_to {
+  margin-bottom: 0;
+}
+#brandbar form.button_to input[type="submit"] {
+  font-size: 1em;
+}
+#brandbar form.button_to .btn-link {
+  border: none;
+  text-decoration: none;
+}
+#report-problem-form {
+  background-color: #f7f7f7;
+  border-bottom: 1px solid #dddddd;
+  display: none;
+  padding-bottom: 15px;
+}
+#report-problem-form h2 {
+  border-top: none;
+  color: #990000;
+  margin-top: 0;
+  padding-top: 20px;
+  text-transform: uppercase;
+}
+#report-problem-form textarea, #report-problem-form input:not([type=submit]):not([type=file]) {
+  width: 80%;
+}
+.cancel-link {
+  margin-left: 12px;
+}
+
+/* fix Stanford Identity styles
+   (their CSS is Bootstrap 2, not Bootstrap 3) */
+span.adr {
+  margin-right: 12px;
+}
+#global-footer .span10 {
+  margin-right: 6px;
+}
+#global-footer a, #global-footer a:visited, #global-footer a:hover {
+  text-decoration: none;
+}
+
+/* Global */
+body {
+  background-color: #fbfbf9;
+}
+body #su-content {
+  font-size: 13px;
+}
+/*#su-content a, #su-content a:visited, #su-content a:hover {
+  text-decoration: none;
+  border-bottom: 1px dotted #820000;
+}
+*/
+#su-content h1 a, #su-content h1 a:visited, #su-content h1 a:hover {
+  border-bottom: none;
+  color: #8C1515;
+}
+.btn.btn-default {
+  color: #333333;
+  background-color: #FFFFFF;
+  background-image: linear-gradient(to bottom, #FFFFFF, #E0E0E0);
+  border-color: #CCCCCC #CCCCCC #CCCCCC;
+}
+.btn.btn-default:hover {
+  background-color: #E0E0E0;
+  background-image: linear-gradient(to bottom, #E0E0E0, #E0E0E0);
+}
+h2, h3, h4, h5, h6 {
+  color: #3f3c30;
+  font-family: "Source Sans Pro",Arial,Helvetica,sans-serif;
+}
+h2 {
+  font-size: 20px;
+}
+#main-container a {
+  color: #8C1515;
+  text-decoration: none;
+}
+#main-container a:visited, #main-container a:hover {
+  color: #2E2D29;
+  text-decoration: none;
+}
+#main-container a:hover {
+  border-bottom: 1px dotted #2E2D29;
+}
+
+/* Masthead */
+.masthead {
+  background: #fbfbf9;
+  border-bottom: 1px solid #dddddd;
+  padding-bottom: 10px;
+  padding-top: 5px;
+}
+.masthead h1 {
+  border-bottom: none;
+  font-size: 32px;
+  margin: 10px 0 0;
+  line-height: 1.5em;
+  padding-bottom: 0;
+}
+.masthead h1 a, .masthead h1 a:hover, .masthead h1 a:visited {
+  border-bottom: none;
+  color: inherit;
+  text-decoration: none;
+}
+.masthead h2 {
+  border: none;
+  clear: left;
+  color: #5F574F;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: normal;
+  margin-top: 0;
+  padding-top: 0;
+  text-transform: none;
+}
+.masthead h2 > span {
+  float: right;
+  font-style: normal;
+  color: #999;
+}
+h1 .navbar.navbar-default {
+  display: none;
+}
+.navbar.search-bar {
+  background-color: #f2f1eb;
+  border-color: #d5d0c0;
+  border-left: none;
+  border-right: none;
+  min-height: 45px;
+}
+#su-content .navbar {
+  margin-bottom: 10px;
+}
+#wayback-navbar {
+  text-align: center;
+}
+#wayback-navbar form {
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+/*.advanced-search {
+  margin-top: 18px;
+}
+.advanced-search > a, .advanced-search > a:visited {
+  color: #2e2d29;
+}*/
+
+/* Homepage */
+.featured-sites h2 {
+  border-bottom: 1px solid #d5d0c0;
+  margin-bottom: 18px;
+  padding-bottom: 4px;
+}
+.featured-sites h3 {
+  font-size: 16px;
+}
+.featured-sites img {
+  border: 1px solid #999;
+}
+.featured-sites .thumbnail {
+  background-color: #fbfbf9;
+  border: none;
+  text-align: center;
+}
+.featured-sites .caption {
+  border: none;
+  padding: 0 9px;
+  text-align: center;
+}
+
+/* URL results (table version: HTMLURLResults.jsp) */
+.url-results {
+  margin-bottom: 50px;
+}
+.url-results h2, .calendar-results h2 {
+  color: #555;
+  font-size: 18px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+.url-results .dataTables_filter label,
+.url-results .dataTables_length label {
+  font-weight: 500;
+}
+.url-results .dataTables_length select {
+  margin-left: 3px;
+  margin-right: 3px;
+}
+.url-results .dataTables_filter input {
+  margin-left: 6px;
+}
+.url-results table.dataTable th.url {
+  padding-left: 6px;
+}
+.url-results table.dataTable td {
+  font-size: 12px;
+}
+.url-results table.dataTable td.captures,
+.url-results table.dataTable td.dupes,
+.url-results table.dataTable td.uniques {
+  text-align: center;
+}
+.url-results table.dataTable.no-footer {
+  margin-bottom: 20px !important;
+}
+#main-container .pagination a:hover {
+  border-bottom: 1px solid #ddd;
+}
+#main-container .pagination > .active > a,
+#main-container .pagination > .active > a:visited {
+  color: #585754;
+}
+.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus {
+  background-color: #d5d0c0;
+  border-color: #d5d0c0;
+  color: #5F574F;
+}
+
+/* Calendar results (table version) */
+.result-summary {
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 6px;
+  font-size: 16px;
+}
+.search-resource {
+  font-weight: bold;
+  color: #555;
+}
+.result-count {
+  font-weight: bold;
+}
+table.results {
+  border: 1px solid #e3dfd5;
+  margin-top: 20px;
+  width: 100%;
+}
+table.results .heading-row {
+  background-color: #e3dfd5;
+}
+table.results .data-row {
+  background-color: #f2f1eb;
+}
+table.results td {
+  padding-bottom: 6px;
+  padding-top: 6px;
+}
+
+/* Calendar results (bubble version) */
+.calendar-results h2 a,
+.calendar-results h2 a:visited {
+  border-bottom: 1px dotted #2E2D29;
+}
+#wbChart {
+  margin-bottom: 50px;
+}
+#wbChartThis {
+  /* Explicitly setting a width to prevent
+     year labels from wrapping.
+     This might not be the best solution for the wrapping.
+     Also, we might need to increase the width when years 
+     after 2014 are added. */ 
+  width: 1176px;
+}
+.wbChartThisContainer, .wbChartHover {
+  border-bottom: 4px solid #bbb;
+  font-size: 15px;
+  height: 100%;
+  padding: 0 1px;
+}
+.wbChartThisContainer.leftmost {
+  border-left: 1px solid #bbb;
+}
+.wbChartThisContainer.rightmost {
+  border-right: 1px solid #bbb;
+  padding-right: 0;
+}
+.activeHighlight {
+  background-color: #993404 !important;
+  padding: 4px 0;
+  font-size: 15px !important;
+  color: #fff !important;
+}
+.inactiveHighlight {
+  background-color: #eee !important;
+  padding: 4px 0;
+  font-size: 15px !important;
+  color: #000!important;
+}
+#wbCalendar {
+  margin: 25px auto 0;
+}
+.month .label {
+  color: #333;
+  font-size: 12px;
+}
+.month table th {
+  padding: 0;
+}
+.month table td .date {
+  width: 25px;
+  height: 25px;
+}
+.month table td .day span,
+.month table td .day a,
+.month table td .day a:hover {
+  font-size: 13px;
+  height: 19px;
+  padding-top: 4px;
+  padding-right: 6px;
+}
+.month table td .day a,
+.month table td .day a:hover {
+  padding-top: 2px;
+}
+.month table td .day a {
+  font-weight: 700;
+}
+.date.tooltip {
+  padding-top: 3px;
+  /* position and opacity styles are to 
+  override Bootstrap .tooltip styling */
+  position: initial;
+  opacity: 1;
+}
+.date.low,
+.date.low-medium,
+.date.medium,
+.date.medium-high,
+.date.high {
+  border: 1px solid #ddd;
+}
+.date.low {
+  background-color: #fee391;
+}
+.date.low-medium {
+  background-color: #fec44f;
+}
+.date.medium {
+  background-color: #fe9929;
+  color: #f7f7f7;
+}
+.date.medium-high {
+  background-color: #d95f0e;
+  color: #f7f7f7;
+}
+.date.high {
+  background-color: #993404;
+  color: #f7f7f7;
+}
+
+/* Error page */
+.no-results-msg {
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 6px;
+  font-size: 18px;
+  font-weight: bold;
+}
+.no-results-suggestions > p {
+  margin-bottom: 12px;
+}
+.error-options {
+  margin-top: 18px;
+}
+
+/* Media queries */
+
+/* All smaller mobile devices */
+@media screen and (max-width: 767px) {
+  .masthead {
+    padding-bottom: 0;
+  }
+  .masthead .site-header-content {
+    text-align: center;
+  }
+  .masthead h1 {
+    font-size: 27px;
+    float: none;
+  }
+  .masthead h2 {
+    font-size: 14px;
+  }
+  .masthead h2 > span {
+    display: block;
+    margin-top: 10px;
+    width: 100%;
+  }
+  .menu-bar .nav {
+    float: none;
+    text-align: center;
+    margin-left: -40px;
+  }
+  #su-content .navbar {
+    min-height: 0;
+  }
+  h1 .navbar.navbar-default {
+    background: white;
+    border: none;
+    display: inline-block;
+    float: right;
+  }
+  .navbar-form .form-group {
+    margin-bottom: 8px;
+  }
+  .navbar-form button[type="submit"] {
+    float: left;
+  }
+  nav.navbar.navbar-default {
+    padding: 0 15px;
+  }
+  nav.navbar.navbar-default .navbar-form {
+    border: none;
+  }
+   button.navbar-toggle, button.navbar-toggle.collapsed {
+    margin-top: 3px;
+  }
+/*  .advanced-search {
+    margin-top: 0;
+  }*/
+}

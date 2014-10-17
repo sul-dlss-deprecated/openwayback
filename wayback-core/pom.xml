@@ -5,8 +5,8 @@
   <parent>
     <artifactId>openwayback</artifactId>
     <groupId>org.netpreserve.openwayback</groupId>
-    <version>2.0.0</version>
-  </parent>
+    <version>2.0.1-SNAPSHOT</version>
+ </parent>
 
   <artifactId>openwayback-core</artifactId>
   <name>OpenWayback Core Java Classes</name>

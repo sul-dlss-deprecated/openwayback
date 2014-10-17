@@ -31,82 +31,93 @@ StringFormatter fmt = results.getWbRequest().getFormatter();
 %>
 <jsp:include page="/WEB-INF/template/UI-header.jsp" flush="true" />
 
-        <div id="positionHome">
-            <section>
-            <div id="error">
+<!-- Main page content -->
+<div id="main-container" class="container">
+  <div class="row">
+    <div id="content" class="col-sm-12">
+      <div class="no-results-msg">
+        <%= fmt.format(e.getTitleKey()) %>
+      </div>
+      
+      <div class="no-results-suggestions">
+        <p><%= fmt.format(e.getMessageKey(),e.getMessage()) %></p>
 
-                <h2><%= fmt.format(e.getTitleKey()) %></h2>
-                <p><%= fmt.format(e.getMessageKey(),e.getMessage()) %></p>
-<%
-if(e instanceof ResourceNotInArchiveException) {
-	ResourceNotInArchiveException niae = (ResourceNotInArchiveException) e;
-	List<String> closeMatches = niae.getCloseMatches();
-	if(closeMatches != null && !closeMatches.isEmpty()) {
-%>
-		        <p>Other possible close matches to try:</p>
-		        <p>
-<%
-		WaybackRequest tmp = wbr.clone();
-		for(String closeMatch : closeMatches) {
-			tmp.setRequestUrl(closeMatch);
-			String link = queryPrefix + "query?" +
-				tmp.getQueryArguments();
-%>
-			    <a href="<%= link %>"><%= closeMatch %></a><br/>
-<%
-		}
-	}
-	String parentUrl = UrlOperations.getUrlParentDir(requestUrl);
-	if(parentUrl != null) {
-		WaybackRequest tmp = wbr.clone();
-		tmp.setRequestUrl(parentUrl);
-		tmp.setUrlQueryRequest();
-		String link = queryPrefix + "query?" +
-			tmp.getQueryArguments();
-		String escapedLink = fmt.escapeHtml(link);
-		String escapedParentUrl = fmt.escapeHtml(parentUrl);
-		%>
-		        </p>
-		        <p>More options:</p>
-			    <p>Try Searching all pages under <a href="<%= escapedLink %>"><%= escapedParentUrl %></a></p>
-		<%
-	}
-} else if(e instanceof SpecificCaptureReplayException) {
-	%>
-	        <div class="wm-nav-link-div">
-	        <%
-	        SpecificCaptureReplayException scre = (SpecificCaptureReplayException) e;
+        <%
+        if(e instanceof ResourceNotInArchiveException) {
+        	ResourceNotInArchiveException niae = (ResourceNotInArchiveException) e;
+        	List<String> closeMatches = niae.getCloseMatches();
+        	if(closeMatches != null && !closeMatches.isEmpty()) {
+        %>
+        		        <p>Other possible close matches to try:</p>
+        		        <p>
+        <%
+        		WaybackRequest tmp = wbr.clone();
+        		for(String closeMatch : closeMatches) {
+        			tmp.setRequestUrl(closeMatch);
+        			String link = queryPrefix + "query?" +
+        				tmp.getQueryArguments();
+        %>
+        			    <a href="<%= link %>"><%= closeMatch %></a><br/>
+        <%
+        		}
+        	}
+        	String parentUrl = UrlOperations.getUrlParentDir(requestUrl);
+        	if(parentUrl != null) {
+        		WaybackRequest tmp = wbr.clone();
+        		tmp.setRequestUrl(parentUrl);
+        		tmp.setUrlQueryRequest();
+        		String link = queryPrefix + "query?" +
+        			tmp.getQueryArguments();
+        		String escapedLink = fmt.escapeHtml(link);
+        		String escapedParentUrl = fmt.escapeHtml(parentUrl);
+        		%>
+        		        </p>
+        		        <p class="error-options">Here are some other options you can try:</p>
+        			    <p>Search all pages under <a href="<%= escapedLink %>"><%= escapedParentUrl %></a></p>
+        		<%
+        	}
+        } else if(e instanceof SpecificCaptureReplayException) {
+        	%>
+        	        <div class="wm-nav-link-div">
+        	        <%
+        	        SpecificCaptureReplayException scre = (SpecificCaptureReplayException) e;
 
-	        CaptureSearchResult prev = scre.getPreviousResult();
-	        CaptureSearchResult next = scre.getNextResult();
-	        String dateFormat = "{0,date,MMMM dd, yyyy HH:mm:ss}";
-	        ResultURIConverter conv = wbr.getAccessPoint().getUriConverter();
-	        if((prev != null) && (next != null)) {
-	                String safePrevReplay = fmt.escapeHtml(conv.makeReplayURI(prev.getCaptureTimestamp(),prev.getOriginalUrl()));
-	                String safeNextReplay = fmt.escapeHtml(conv.makeReplayURI(next.getCaptureTimestamp(),next.getOriginalUrl()));
-	                %>
-	                Would you like to try the <a href="<%= safePrevReplay %>">previous</a> or <a href="<%= safeNextReplay %>">next</a> date?
-	                <%
-	        } else if (prev != null) {
-	                String safePrevReplay = fmt.escapeHtml(conv.makeReplayURI(prev.getCaptureTimestamp(),prev.getOriginalUrl()));
-	                %>
-	                Would you like to try the <a href="<%= safePrevReplay %>">previous</a> date?
-	                <%
+        	        CaptureSearchResult prev = scre.getPreviousResult();
+        	        CaptureSearchResult next = scre.getNextResult();
+        	        String dateFormat = "{0,date,MMMM dd, yyyy HH:mm:ss}";
+        	        ResultURIConverter conv = wbr.getAccessPoint().getUriConverter();
+        	        if((prev != null) && (next != null)) {
+        	                String safePrevReplay = fmt.escapeHtml(conv.makeReplayURI(prev.getCaptureTimestamp(),prev.getOriginalUrl()));
+        	                String safeNextReplay = fmt.escapeHtml(conv.makeReplayURI(next.getCaptureTimestamp(),next.getOriginalUrl()));
+        	                %>
+        	                Would you like to try the <a href="<%= safePrevReplay %>">previous</a> or <a href="<%= safeNextReplay %>">next</a> date?
+        	                <%
+        	        } else if (prev != null) {
+        	                String safePrevReplay = fmt.escapeHtml(conv.makeReplayURI(prev.getCaptureTimestamp(),prev.getOriginalUrl()));
+        	                %>
+        	                Would you like to try the <a href="<%= safePrevReplay %>">previous</a> date?
+        	                <%
 
-	        } else if (next != null) {
-	                String safeNextReplay = fmt.escapeHtml(conv.makeReplayURI(next.getCaptureTimestamp(),next.getOriginalUrl()));
-	                %>
-	                Would you like to try the <a href="<%= safeNextReplay %>">next</a> date?
-	                <%
-	        }
-	        %>
-	        </div>
-	<%
-}
-%>
+        	        } else if (next != null) {
+        	                String safeNextReplay = fmt.escapeHtml(conv.makeReplayURI(next.getCaptureTimestamp(),next.getOriginalUrl()));
+        	                %>
+        	                Would you like to try the <a href="<%= safeNextReplay %>">next</a> date?
+        	                <%
+        	        }
+        	        %>
+        	        </div>
+        	<%
+        }
+        %>
 
             </div>
-            </section>
-            <div id="errorBorder"></div>
+            
+          </div>
+        </div>
+      </div>
 
-<jsp:include page="/WEB-INF/template/UI-footer.jsp" flush="true" />
+<!-- Closing tags below close tags opened in UI_header.jsp -->
+      </div> <!-- #su-content end -->
+    </div> <!-- #su-wrap end -->
+
+  <jsp:include page="/WEB-INF/template/UI-footer.jsp" flush="true" />
