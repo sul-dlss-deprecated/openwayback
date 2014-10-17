@@ -48,6 +48,6 @@ public class ValueGraphElement extends RectangularGraphElement {
 	public void draw(Graphics2D g2d) {
 		g2d.setColor(highlighted ? 
 				config.valueHighlightColor : config.valueColor);
-		g2d.fillRect(x, y, width-1, height);
+		g2d.fillRect(x, y, width, height);
 	}
 }
