@@ -97,11 +97,11 @@ public class GraphConfiguration {
 	/**
 	 * color for non-active/selected graph values
 	 */
-	public Color valueColor = Color.black;
+	public Color valueColor = new Color(153,153,153);
 	/**
 	 * color for active/selected graph values ( #ec008c )
 	 */
-	public Color valueHighlightColor = new Color(236,0,140,255);
+	public Color valueHighlightColor = new Color(153,52,4);
 
 	/**
 	 * Minimum pixel height for non-zero graph values
