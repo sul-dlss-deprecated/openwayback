@@ -41,8 +41,8 @@ import org.archive.wayback.util.partition.Partitioner;
  */
 public class ToolBarData {
 	
-	private UIResults uiResults;
-	private StringFormatter fmt;
+	protected UIResults uiResults;
+	protected StringFormatter fmt;
 	
 	/** Latest Result one year before current, or null */
 	public CaptureSearchResult yearPrevResult;
@@ -80,6 +80,13 @@ public class ToolBarData {
 	protected static final Partitioner<CaptureSearchResult> monthPartitioner = 
 		new Partitioner<CaptureSearchResult>(monthMap);
 
+	
+	/**
+	 * Implicit constructor requires to keep the inherited class clean
+	 */
+	protected ToolBarData(){
+		
+	}
 	/**
 	 * @param uiResults the UIResults holding replay info
 	 */
@@ -91,7 +98,6 @@ public class ToolBarData {
 		findRelativeLinks();
 		Date firstDate = uiResults.getWbRequest().getStartDate();
 		Date lastDate = uiResults.getWbRequest().getEndDate();
-
 		yearPartitions = yearPartitioner.getRange(yearSize,firstDate,lastDate);
 
 		Date firstYearDate = yearPartitions.get(0).getStart();
@@ -181,7 +187,7 @@ public class ToolBarData {
 	public static Date addDay(Date date, int amt) {
 		return addDateField(date,Calendar.DATE,amt);
 	}
-	private void findRelativeLinks() {
+	protected void findRelativeLinks() {
 		Date cur = curResult.getCaptureDate();
 		
 		Date minYear = addYear(cur,-1);
