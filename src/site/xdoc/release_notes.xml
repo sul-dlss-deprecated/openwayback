@@ -14,11 +14,31 @@
         to release 1.2.0.
       </p>
     </section>
-    <!-- 
-    <section name="Release 2.x.x">
-      <subsection name="Major Features">
+    <section name="OpenWayback 2.0.1 Release">
+      <subsection name="Features">
+       <ul>
+       </ul>
+      </subsection>
+      <subsection name="Bug Fixes">
         <ul>
-          <li>
+          <li>Fixed building with JDK 8. <a href="https://github.com/iipc/openwayback/pull/141">#141</a></li>
+        </ul>
+      </subsection>
+    </section>
+    <section name="OpenWayback 2.0.0 Release">
+      <subsection name="Features">
+       <ul>
+          <li>Fixed URL resolution in ServerRelativeArchivalRedirect in non-ROOT context. <a href="https://github.com/iipc/openwayback/issues/92">#92</a>
+           </li>
+           <li>Deprecated use of bean name in spring to provide configuration. <a href="https://github.com/iipc/openwayback/issues/94">#94</a></li>
+           <li>Updated and improved documentation. <a href="https://github.com/iipc/openwayback/issues/125">#125</a> <a href="https://github.com/iipc/openwayback/issues/121">#121</a> <a href="https://github.com/iipc/openwayback/issues/133">#133</a></li>
+           <li>Reviewed and updated mailing lists. <a href="https://github.com/iipc/openwayback/issues/126">#126</a> <a href="https://github.com/iipc/openwayback/issues/127">#127</a></li>
+           <li>Added Java cross-reference and updated site generation with dependencies. <a href="https://github.com/iipc/openwayback/issues/128">#128</a> <a href="https://github.com/iipc/openwayback/issues/130">#30</a></li>
+           <li>Fixed Javadoc output in Java8. <a href="https://github.com/iipc/openwayback/issues/136">#136</a></li>
+           <li>Updated 'developers' and 'contributors' lists in POM. <a href="https://github.com/iipc/openwayback/issues/137">#137</a></li>
+           <li>Cleaned up the Memento configuration. <a href="https://github.com/iipc/openwayback/issues/150">#150</a></li>
+           <li>Added new logos to project. <a href="https://github.com/iipc/openwayback/issues/100">#100</a></li>
+           <li>Cleaned up default config file. <a href="https://github.com/iipc/openwayback/pull/144">#144</a>
            </li>
         </ul>
       </subsection>
@@ -38,7 +58,13 @@
         <ul>
           <li>
           </li>
+<<<<<<< Updated upstream
         </ul>
+=======
+          <li>Fixed support for uncompressed ARCs files <a href="https://github.com/iipc/openwayback/issues/101">#101</a>
+        </li>
+       </ul>
+>>>>>>> Stashed changes
       </subsection>
     </section>
     -->
