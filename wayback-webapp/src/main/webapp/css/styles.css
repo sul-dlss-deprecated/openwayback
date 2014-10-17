@@ -18,7 +18,7 @@ a:visited		{ font-family: Arial, Helvetica, sans-serif; color: #993399; text-dec
 .mainCalendar		{ font-family: Arial, Helvetica, sans-serif; font-size: 14pt; font-style: normal; font-weight: bold}
 .mainSecHead		{ font-family: Arial, Helvetica, sans-serif; font-size: 12pt; font-style: normal; font-weight: bold; color: #000000}
 .mainBodyG		{ font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10pt; font-weight: bold; color: #999999}
-.mainBigBody		{ font-family: Calibri; font-weight: bold; font-size: 11pt}
+.mainBigBody		{ font-family: Arial, Helvetica, sans-serif; font-size: 12pt}
 .mainBigBodyR		{ font-family: Arial, Helvetica, sans-serif; font-size: 12pt; color: #990000}
 .mainExample		{ font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10pt; color: #0000FF}
 .mainSecHeadW		{ font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 12pt; font-weight: bold; color: #FFFFFF}

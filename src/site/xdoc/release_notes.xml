@@ -4,122 +4,107 @@
   <properties>
     <title>Release Notes</title>
     <author email="brad at archive dot org">Brad Tofel</author>
+    <authour email="Helen Hockx-Yu at bl dot uk">Helen Hockx-Yu </authour>
     <revision>$Id: index.xml 2040 2007-10-12 23:21:40Z bradtofel $</revision>
+    <revision>$ID:12-09-2014$</revision>
   </properties>
 
   <body>
-    <section name="Releases">
+  
+    <section name="Release notes">
       <p>
-        Full listing of changes and bug fixes are not currently available prior
-        to release 1.2.0.
+        Full listing of changes and bug fixes are not available prior to release 1.2.0 and between release 1.6.0 and OpeWayback 2.0.0 BETA 1 release. 
       </p>
     </section>
-    <!-- 
-    <section name="Release 2.x.x">
-      <subsection name="Major Features">
-        <ul>
-          <li>
+    
+      <section name="OpenWayback 2.0.0 Release">
+      <subsection name="Features">
+       <ul>
+          <li>Fixed URL resolution in ServerRelativeArchivalRedirect in non-ROOT context. <a href="https://github.com/iipc/openwayback/issues/92">#92</a>
            </li>
+           <li>Deprecated use of bean name in spring to provide configuration. <a href="https://github.com/iipc/openwayback/issues/94">#94</a></li>
+           <li>Updated and improved documentation. <a href="https://github.com/iipc/openwayback/issues/125">#125</a> <a href="https://github.com/iipc/openwayback/issues/121">#121</a> <a href="https://github.com/iipc/openwayback/issues/133">#133</a></li>
+           <li>Reviewed and updated mailing lists. <a href="https://github.com/iipc/openwayback/issues/126">#126</a> <a href="https://github.com/iipc/openwayback/issues/127">#127</a></li>
+           <li>Added Java cross-reference and updated site generation with dependencies. <a href="https://github.com/iipc/openwayback/issues/128">#128</a> <a href="https://github.com/iipc/openwayback/issues/130">#30</a></li>
+           <li>Fixed Javadoc output in Java8. <a href="https://github.com/iipc/openwayback/issues/136">#136</a></li>
+           <li>Updated 'developers' and 'contributors' lists in POM. <a href="https://github.com/iipc/openwayback/issues/137">#137</a></li>
+           <li>Cleaned up the Memento configuration. <a href="https://github.com/iipc/openwayback/issues/150">#150</a></li>
+           <li>Added new logos to project. <a href="https://github.com/iipc/openwayback/issues/100">#100</a></li>
+           <li>Cleaned up default config file. <a href="https://github.com/iipc/openwayback/pull/144">#144</a>
+           </li>
+          <li>Updated and improved <a href="https://github.com/iipc/openwayback/issues?q=is%3Aissue+is%3Aclosed+label%3Adocumentation">documentation</a>.
+          </li>
+          <li>Updated dependency on Webarchive-commons 1.1.4. <a href="https://github.com/iipc/openwayback/pull/157">#157</a>
+          </li>
+          <li>Added 'accessPointPath' to default proxy config. <a href="https://github.com/iipc/openwayback/pull/158">#158</a>
+          </li>
+      </ul>
+      </subsection>
+      
+      <subsection name="Bug Fixes">
+       <ul>
+          <li>Fixed the date locale issue. Creations of java.text.SimpleDateFormat now independent of local setting. <a href="https://github.com/iipc/openwayback/pull/157">#157</a> <a href="https://github.com/iipc/openwayback/issues/148">#148</a> <a href="https://github.com/iipc/openwayback/pull/154">#154</a>
+          </li>
+          <li>Fixed support for uncompressed ARCs files <a href="https://github.com/iipc/openwayback/issues/101">#101</a>
+        </li>
+       </ul>
+       </subsection>
+    </section>
+    <section name="OpenWayback 2.0.0 BETA 2 release">
+      <subsection name="Features">
+        <ul>
+          <li>Added PrefixFieldCollapser and RegexFieldMatcher to CDX server. <a href="https://github.com/iipc/openwayback/issues/7">#7</a>
+           </li>
+          <li>Added support for WARC metadata records. <a href="https://github.com/iipc/openwayback/issues/23">#23</a></li> 
+          <li>Added support for WARC resource records. <a href="https://github.com/iipc/openwayback/issues/24">#24</a></li>
+          <li>Removed Internet Archive defaults and branding. <a href="https://github.com/iipc/openwayback/issues/45">#45</a></li>
+          <li>Integrated JWAT ResorceStore. <a href="https://github.com/iipc/openwayback/issues/54">#54</a></li>
+          <li>Provided an <a href="https://github.com/iipc/openwayback-sample-overlay">OpenWayback Sample Overlay</a>.</li>
+          <li>Carried out and documented manual testing. <a href="https://github.com/iipc/openwayback/issues/80">#80</a></li>
+          <li>Updated and improved documentation (as on the <a href="https://github.com/iipc/openwayback/wiki">wiki</a>. </li>
+          <li>Renamed artefacts and repositories “webarchive-commons” and updated POMs. <a href="https://github.com/iipc/openwayback/issues/90">#90</a></li>
         </ul>
       </subsection>
-      <subsection name="Major Bug Fixes">
+      <subsection name="Bug Fixes">
         <ul>
-          <li>
+          <li>Query string being stripped from Memento queries. #106
           </li>
-        </ul>
-      </subsection>
-      <subsection name="Minor Features">
-        <ul>
-          <li>
-          </li>
-        </ul>
-      </subsection>
-      <subsection name="Minor Bug Fixes">
-        <ul>
-          <li>
-          </li>
+          <li>Support for uncompressed ARC files. #101</li>
         </ul>
       </subsection>
     </section>
-    -->
-    <section name="Release 2.0.0 BETA 3">
-      <subsection name="Major Features">
+    <section name="OpenWayback 2.0.0 BETA 1 Release">
+      <subsection name="Features">
         <ul>
-          <li>
-           </li>
+          <li>Added livewebPrefix to wayback.xml. <a href="https://github.com/iipc/openwayback/issues/3">#3</a></li>
+          <li>Removed dependencies on Internet Archive’s Maven artefacts, enabling Tarvis CI builds and clean releases. <a href="https://github.com/iipc/openwayback/issues/10">#10</a></li>
+          <li>Moved critical code for OpenWayback from the heritrix-commons codebase into webarchive-commons. <a href="https://github.com/iipc/openwayback/issues/4">#4</a></li>
         </ul>
       </subsection>
-      <subsection name="Major Bug Fixes">
+      <subsection name="Bug Fixes">
         <ul>
-          <li>
+          <li>Dependency on heritrix-commons SNAPSHOT release. <a href="https://github.com/iipc/openwayback/issues/11">#11</a> 
           </li>
         </ul>
       </subsection>
-      <subsection name="Minor Features">
-        <ul>
-          <li>
+   </section>    
+<p>The following releases of the Open Source Wayback Machine (OSWM) were made by the Internet Archive. The on-going development of Wayback was handed over to the International Internet Preservation Consortium (IIPC) in October 2013. For more details please see General overview. </p>    
+   
+    <section name="release 1.8.0">
+    <subsection name="Features">
+      <ul>
+          <li>Introduced the wayback-cdx-server.
           </li>
         </ul>
-      </subsection>
-      <subsection name="Minor Bug Fixes">
-        <ul>
-          <li>
-          </li>
-        </ul>
-      </subsection>
+        <p>No further release notes available.</p>
+    </subsection>
     </section>
-    <section name="Release 2.0.0 BETA 2">
-      <subsection name="Major Features">
-        <ul>
-          <li>
-           </li>
-        </ul>
-      </subsection>
-      <subsection name="Major Bug Fixes">
-        <ul>
-          <li>
-          </li>
-        </ul>
-      </subsection>
-      <subsection name="Minor Features">
-        <ul>
-          <li>
-          </li>
-        </ul>
-      </subsection>
-      <subsection name="Minor Bug Fixes">
-        <ul>
-          <li>
-          </li>
-        </ul>
-      </subsection>
+    
+    <section name="Release 1.7.0">
+    <p>Release notes not available.</p>
     </section>
-    <section name="Release 2.0.0 BETA 1">
-      <subsection name="Major Features">
-        <ul>
-          <li>
-           </li>
-        </ul>
-      </subsection>
-      <subsection name="Major Bug Fixes">
-        <ul>
-          <li>
-          </li>
-        </ul>
-      </subsection>
-      <subsection name="Minor Features">
-        <ul>
-          <li>
-          </li>
-        </ul>
-      </subsection>
-      <subsection name="Minor Bug Fixes">
-        <ul>
-          <li>
-          </li>
-        </ul>
-      </subsection>
-    </section>
+    
+    
     <section name="Release 1.6.0">
       <subsection name="Major Features">
         <ul>
