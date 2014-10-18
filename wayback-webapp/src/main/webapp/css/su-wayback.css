@@ -338,7 +338,7 @@ table.results td {
 .wbChartThisContainer, .wbChartHover {
   border-bottom: 4px solid #bbb;
   font-size: 15px;
-  height: 100%;
+ /* height: 100%;*/
   padding: 0 1px;
 }
 .wbChartThisContainer.leftmost {
