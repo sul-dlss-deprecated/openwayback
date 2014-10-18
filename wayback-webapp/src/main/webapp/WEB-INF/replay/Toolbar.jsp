@@ -288,7 +288,7 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
            but without it the overlay doesn't show.
            Probably related to JS code at very bottom of this page. -->
 <script type="text/javascript" src="<%= staticPrefix %>js/disclaim-element.js" ></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" ></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" ></script>
 
 <script type="text/javascript" src="<%= staticPrefix %>js/su-wayback-m-bootstrap-tooltip.js" ></script>
 
