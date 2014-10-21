@@ -206,6 +206,7 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
     border:1px solid #bbb;
     overflow:hidden;
     word-break:normal;
+    box-sizing: border-box;
   }
   .su-wayback-m-years td > div, .su-wayback-m-months td > div, .su-wayback-m-days td > div {
     background: #555;
@@ -242,6 +243,7 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
   .su-wayback-m-years .su-wayback-m-frequency,
   .su-wayback-m-months .su-wayback-m-frequency,
   .su-wayback-m-days .su-wayback-m-frequency {
+    height: 24px;
     width: 24px;
     background-color: #f7f7f7;
   }
@@ -364,14 +366,18 @@ function sumDigitString(digits){
   // Create cells for the YEARS visualization when the document is loaded.
   $.each(years_json, function(key, value) {
     determineFrequencyClass(value);
-     console.log(key + ": " + value + " = " + freq_class);
-    var cell = $('<td class="su-wayback-m-frequency ' + freq_class + '" data-toggle="tooltip" data-placement="top" data-container="body" data-key="' + key + '" data-original-title="' + key + ': ' + value +  ' captures" title=""><div style="opacity: 0;">&nbsp;</div></td>')
+     //console.log(key + ": " + value + " = " + freq_class);
+    if (freq_class.indexOf("captures")>=0) {
+      var cell = $('<td class="su-wayback-m-frequency ' + freq_class + '" data-toggle="tooltip" data-placement="top" data-container="body" data-key="' + key + '" data-original-title="' + key + ': ' + value +  ' captures" title=""><div style="opacity: 0;">&nbsp;</div></td>');
+    } else {
+        var cell = $('<td class="su-wayback-m-frequency ' + freq_class + '"><div style="opacity: 0;">&nbsp;</div></td>');
+    }
     $("#su-wayback-m-year-data").append(cell);
     $("[data-toggle='tooltip']").tooltip();
   });
   
   // When a year is clicked, create cells for the MONTHS visualization.
-  $(document).on('click', '#su-wayback-m-year-data td', function () {
+  $(document).on('click', '#su-wayback-m-year-data td.su-wayback-m-captures', function () {
     $("#su-wayback-m-year-data td > div").css("opacity", "0");
     $(this).find("div").css("opacity", "1");
     $(".su-toolbar-viz-message").css("display", "none");
@@ -387,15 +393,19 @@ function sumDigitString(digits){
       determineFrequencyClass(value);
       month_label = getMonthLabel(key);
       // console.log("key: " +key + ", value: " + value + " month label: " + month_label);
-
-      var cell = $('<td class="su-wayback-m-frequency ' + freq_class + '" data-toggle="tooltip" data-placement="top" data-container="body" data-year="' + target_year + '" data-key="' + key + '" data-original-title="' +  month_label + " " + target_year + ': ' + value +  ' captures" title=""><div style="opacity: 0;">&nbsp;</div></td>')
+      if (freq_class.indexOf("captures")>=0) {
+        // console.log("cell has: " + freq_class);
+        var cell = $('<td class="su-wayback-m-frequency ' + freq_class + '" data-toggle="tooltip" data-placement="top" data-container="body" data-year="' + target_year + '" data-key="' + key + '" data-original-title="' +  month_label + " " + target_year + ': ' + value +  ' captures" title=""><div style="opacity: 0;">&nbsp;</div></td>');
+      } else {
+          var cell = $('<td class="su-wayback-m-frequency ' + freq_class + '""><div style="opacity: 0;">&nbsp;</div></td>');
+      }
       $("#su-wayback-m-month-data").append(cell);
         $("[data-toggle='tooltip']").tooltip();
     });
   });
   
   // When a month is clicked, create cells for the DAYS visualization.
-  $(document).on('click', '#su-wayback-m-month-data td', function () {
+  $(document).on('click', '#su-wayback-m-month-data td.su-wayback-m-captures', function () {
     $("#su-wayback-m-month-data td > div").css("opacity", "0");
     $(this).find("div").css("opacity", "1");
     $(".su-wayback-m-day-display").css("display", "block");
@@ -411,8 +421,11 @@ function sumDigitString(digits){
       // convert day value to int from string
       determineFrequencyClass(parseInt(day_value, 10));
       var day_label = i + 1; // adjust for zero-based index; days start with 1
-      // TODO: replace the link below with capture clicked on
-      var cell = $('<td class="su-wayback-m-frequency ' + freq_class + '" data-toggle="tooltip" data-placement="top" data-container="body" data-original-title="' + month_label + " " + day_label + ", " + target_year + ': ' + day_value +  ' captures" title=""><a href="<%= replayPrefix %>'+target_year+target_month+day_label+'120000/'+'<%=searchUrlSafe%>" style="z-index: 100001;"><div style="opacity: 0;">&nbsp;</div></a></td>')
+      if (freq_class.indexOf("captures")>=0) {
+        var cell = $('<td class="su-wayback-m-frequency ' + freq_class + '" data-toggle="tooltip" data-placement="top" data-container="body" data-original-title="' + month_label + " " + day_label + ", " + target_year + ': ' + day_value +  ' captures" title=""><a href="<%= replayPrefix %>'+target_year+target_month+day_label+'120000/'+'<%=searchUrlSafe%>" style="z-index: 100001;"><div style="opacity: 0;">&nbsp;</div></a></td>');
+      } else {
+          var cell = $('<td class="su-wayback-m-frequency ' + freq_class + '"><div style="opacity: 0;">&nbsp;</div></td>');
+      }
       $("#su-wayback-m-day-data").append(cell);
       $("[data-toggle='tooltip']").tooltip();
     }
@@ -420,15 +433,15 @@ function sumDigitString(digits){
 
   function determineFrequencyClass(freq) {
     if (freq == 1) {
-      freq_class = "su-wayback-m-low";
+      freq_class = "su-wayback-m-low su-wayback-m-captures";
     } else if ((freq > 1) && (freq <= 3 )) {
-      freq_class = "su-wayback-m-low-medium";
+      freq_class = "su-wayback-m-low-medium su-wayback-m-captures";
     } else if ((freq > 3) && (freq <= 5 )) {
-      freq_class = "su-wayback-m-medium";
+      freq_class = "su-wayback-m-medium su-wayback-m-captures";
     } else if ((freq > 5) && (freq <= 7 )) {
-      freq_class = "su-wayback-m-medium-high";
+      freq_class = "su-wayback-m-medium-high su-wayback-m-captures";
     } else if (freq > 7) {
-      freq_class = "su-wayback-m-high";
+      freq_class = "su-wayback-m-high su-wayback-m-captures";
     } else {
       freq_class = "";
     }
@@ -455,7 +468,7 @@ function sumDigitString(digits){
           text-align:center;
           font-size:12px!important;font-family:'Lucida Grande','Arial',sans-serif!important;">
 
-          <div id="su-wayback-m-sul-logo" style="padding: 6px 12px 12px; height: 36px;">
+          <div id="su-wayback-m-sul-logo" style="padding: 6px 12px 12px; height: 36px; box-sizing: border-box;">
             <div style="width: 100%;">
               <span style="display: inline-block; float: left;">
                 <a href="http://library.stanford.edu" title="Stanford University Library homepage">
@@ -485,7 +498,7 @@ function sumDigitString(digits){
               </span>
             </div>           
           </div>
-          <div style="float: left; height: 34px; width: 100%; margin:0; padding: 8px 20px; font-size: 14px; font-family:'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif!important; color: #555; background-color: #f7f7f7;">
+          <div style="float: left; height: 34px; width: 100%; margin:0; padding: 8px 20px; font-size: 14px; font-family:'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif!important; color: #555; background-color: #f7f7f7; box-sizing: border-box;">
             <div style="float: left; margin-left: 30px;">
               <span>
                 Showing 
@@ -545,7 +558,7 @@ function sumDigitString(digits){
           <table style="border-collapse:collapse;margin:0 auto;padding:0;">
             <tbody>
               <tr>
-                <td style="padding: 20px 0 0;" colspan="2">
+                <td style="padding: 20px 0 0; text-align:center" colspan="2">
                   <form target="_top" method="get" action="<%= queryPrefix %>query" name="wmtb" id="wmtb"
                         style="margin:0!important;padding:0!important;">
                         <input type="text" name="<%= WaybackRequest.REQUEST_URL %>" id="wmtbURL" 
@@ -560,7 +573,7 @@ function sumDigitString(digits){
               </tr>
               <tr>
                 <td>
-                  <h2 style="font-size: 17px; color: #777; margin-top: 20px; margin-bottom: 10px;">
+                  <h2 style="font-family: Arial,sans-serif; font-size: 17px; color: #777; margin-top: 20px; margin-bottom: 10px;">
                      Captured
                       <a href="<%= starLink %>" style="color: #333; text-decoration: none;">
                        <%= data.getResultCount() %> times <!-- TODO: total captures for this URL -->
