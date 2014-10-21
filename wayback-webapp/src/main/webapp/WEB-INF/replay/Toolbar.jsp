@@ -573,7 +573,7 @@ function sumDigitString(digits){
               </tr>
               <tr>
                 <td>
-                  <h2 style="font-family: Arial,sans-serif; font-size: 17px; color: #777; margin-top: 20px; margin-bottom: 10px;">
+                  <h2 style="font-family: Arial,sans-serif; font-size: 15px; color: #777; margin-top: 20px; margin-bottom: 10px;">
                      Captured
                       <a href="<%= starLink %>" style="color: #333; text-decoration: none;">
                        <%= data.getResultCount() %> times <!-- TODO: total captures for this URL -->
