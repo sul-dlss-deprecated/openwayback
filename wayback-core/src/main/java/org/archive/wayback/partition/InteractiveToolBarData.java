@@ -25,6 +25,9 @@ public class InteractiveToolBarData extends ToolBarData {
 	
 	public List<Partition<CaptureSearchResult>> dayPartitions;
 
+	public String firstResultReplayUrl;
+	public String lastResultReplayUrl;
+	
 	public InteractiveToolBarData(UIResults uiResults) {
 		//super(uiResults);
 		this.uiResults = uiResults;
@@ -44,7 +47,8 @@ public class InteractiveToolBarData extends ToolBarData {
 		
 		Iterator<CaptureSearchResult> it = results.iterator();
 		
-		
+		firstResultReplayUrl = fmt.escapeHtml(uiResults.resultToReplayUrl(results.getResults().getFirst()));
+		lastResultReplayUrl = fmt.escapeHtml(uiResults.resultToReplayUrl(results.getResults().getLast()));
 		
 		dayPartitioner.populate(dayPartitions,it);
 		yearPartitioner.populate(yearPartitions,dayPartitions.iterator());

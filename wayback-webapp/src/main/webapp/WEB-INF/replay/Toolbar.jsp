@@ -569,11 +569,11 @@ function sumDigitString(digits){
                      between
                      
 
-                     <a href="<%= replayPrefix+ fmt.format("{0,date,YYYYMMddHHmmss}", data.getFirstResultDate())+"/"+searchUrl %>" style="color: #333; text-decoration: none;">
+                     <a href="<%=  data.firstResultReplayUrl  %>" style="color: #333; text-decoration: none;">
                      <%= fmt.format("{0,date,MMMM d, yyyy}",data.getFirstResultDate() )%>
                      </a>
                      and
-                     <a href="<%= replayPrefix+ fmt.format("{0,date,YYYYMMddHHmmss}", data.getLastResultDate())+"/"+searchUrl %>" style="color: #333; text-decoration: none;">
+                     <a href="<%= data.lastResultReplayUrl  %>" style="color: #333; text-decoration: none;">
                     <%= fmt.format("{0,date,MMMM d, yyyy}",data.getLastResultDate() )%>
 
                      </a>
