@@ -56,27 +56,20 @@ int secs = 5;
     <jsp:include page="/WEB-INF/template/UI-header.jsp" flush="true" />
 
         <div id="positionHome">
-            <section>
-            <div id="logoHome">
-                <a href="/index.jsp"><h1><span>OpenWayback</span></h1></a>
-            </div>
-            </section>
-            <section>
-            <div id="error">
+            <div id="error" style="padding-left:10px;">
 	<script type="text/javascript">
 	function go() {
 		document.location.href = "<%= safeTargetReplayUrlJS %>";
 	}
 	window.setTimeout("go()",<%= secs * 1000 %>);
 	</script>
-		<p class="code">Loading...</p>
-		<p class="code shift target"><%= safeSource %> | <%= prettyDate %></p>
-		<p class="code shift red">Got an HTTP 302 response at crawl time</p>
-		<p class="code">Redirecting to...</p>
-		<p class="code shift target"><%= safeTarget %></p>
-        <p class="impatient"><a href="<%= safeTargetReplayUrl %>">Impatient?</a></p>
+			<h3>Loading...</h3>
+		<p >The requested URI: <span class="font"><%= safeSource %> </span> at <%= prettyDate %> got an HTTP 302 response at crawl time. Wayback will redirect you in 5 sec to ...</p>
+		<p ><%= safeTarget %></p>
+
+        <p style="font-size:small;" ><br/>Do you have problems with redirection? Use this <a href="<%= safeTargetReplayUrl %>">direct link</a>.</p>
             </div>
             </section>
-            <div id="errorBorder"></div>
+            <div id="errorBorder" style="padding-bottom: 130px"></div>
 
         <jsp:include page="/WEB-INF/template/UI-footer.jsp" flush="true" />
