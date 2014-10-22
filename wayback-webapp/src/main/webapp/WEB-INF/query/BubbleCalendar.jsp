@@ -67,15 +67,11 @@ Calendar cal = BubbleCalendarData.getUTCCalendar();
            </span>
            between
            <span class="search-date">
-             <a href="<%= data.firstResultReplayUrl %>">
-               <%= fmt.format("{0,date,MMMM d, yyyy}",data.firstResultDate) %>
-             </a>
+             <a href="<%= data.firstResultReplayUrl %>"><%= fmt.format("{0,date,MMMM d, yyyy}",data.firstResultDate) %></a>
           </span>
           and
           <span class="search-date">
-            <a href="<%= data.lastResultReplayUrl %>">
-              <%= fmt.format("{0,date,MMMM d, yyyy}",data.lastResultDate) %>
-            </a>
+            <a href="<%= data.lastResultReplayUrl %>"><%= fmt.format("{0,date,MMMM d, yyyy}",data.lastResultDate) %></a>
          </span>
         </h2>
       </div>

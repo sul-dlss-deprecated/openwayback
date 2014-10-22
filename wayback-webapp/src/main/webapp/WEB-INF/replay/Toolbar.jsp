@@ -607,21 +607,13 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
                 <td>
                   <h2 style="font-family: Arial,sans-serif; font-size: 15px; color: #777; margin-top: 20px; margin-bottom: 10px;">
                      Captured
-                      <a href="<%= starLink %>" style="color: #333; text-decoration: none;">
-                       <%= data.getResultCount() %> times <!-- TODO: total captures for this URL -->
-
-                     </a>
+                      <a href="<%= starLink %>" style="color: #333; text-decoration: none;"><%= data.getResultCount() %> times</a>
                      between
                      
 
-                     <a href="<%=  data.firstResultReplayUrl  %>" style="color: #333; text-decoration: none;">
-                     <%= fmt.format("{0,date,MMMM d, yyyy}",data.getFirstResultDate() )%>
-                     </a>
+                     <a href="<%=  data.firstResultReplayUrl  %>" style="color: #333; text-decoration: none;"><%= fmt.format("{0,date,MMMM d, yyyy}",data.getFirstResultDate() )%></a>
                      and
-                     <a href="<%= data.lastResultReplayUrl  %>" style="color: #333; text-decoration: none;">
-                    <%= fmt.format("{0,date,MMMM d, yyyy}",data.getLastResultDate() )%>
-
-                     </a>
+                     <a href="<%= data.lastResultReplayUrl  %>" style="color: #333; text-decoration: none;"><%= fmt.format("{0,date,MMMM d, yyyy}",data.getLastResultDate() )%></a>
                   </h2>
 
                 </td>
