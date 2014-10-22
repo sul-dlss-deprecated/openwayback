@@ -33,6 +33,10 @@ String staticPrefix = results.getStaticPrefix();
 String queryPrefix = results.getQueryPrefix();
 String replayPrefix = results.getReplayPrefix();
 
+String toolbar_mode = (String)request.getParameter("su-wayback-toolbar-mode");
+System.out.println(toolbar_mode);
+
+
 String graphJspPrefix = results.getContextConfig("graphJspPrefix");
 if(graphJspPrefix == null) {
   graphJspPrefix = queryPrefix;
@@ -284,6 +288,14 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
     background-color: #993404;
     color: #f7f7f7;
   }
+  .su-wayback-submit-link {
+    background-color: transparent;
+    text-decoration: underline;
+    border: none;
+    color: #555;
+    cursor: pointer;
+    font-size: 14px; font-family:'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif!important; color: #555; background-color: #f7f7f7; 
+  }
 </style>  
 
 <!-- TODO: We should be able to remove js/disclaim-element.js 
@@ -296,38 +308,46 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
 
 <script type="text/javascript">
 
-function daysInMonth(month,year) {
-   return new Date(year, month, 0).getDate();
-}
-
-function sumDigitString(digits){
-  
-  var sum = 0;
-  for(var i=0; i< digits.length; i++){
-    var digit = digits[i];
-    sum = sum + parseInt(digit,16);
+  function daysInMonth(month,year) {
+     return new Date(year, month, 0).getDate();
   }
-  return sum;
-}
+
+  function sumDigitString(digits){
+    var sum = 0;
+    for(var i=0; i< digits.length; i++){
+      var digit = digits[i];
+      sum = sum + parseInt(digit,16);
+    }
+    return sum;
+  }
+
+  function su_wayback_submit_form(action_url){
+    $("#su-wayback-prevNext-form").attr("action", action_url);
+    $("#su-wayback-prevNext-form").submit();
+    return true;
+  }
+
   $().ready(function(){
     // Stanford Wayback show/hide toggle
     $("#su-wayback-m-visibility-toggle").click(function() {
       $(this).text($(this).text() == 'Show overlay' ? 'Hide overlay' : 'Show overlay');
       $("#su-wayback-m-toolbar-info").toggle();
+      $("#su-wayback-toolbar-mode").val($(this).text());
       return false;
-    });
+  });
 
-
-    
+  if("<%=toolbar_mode%>" == "Show overlay"){
+    $("#su-wayback-m-visibility-toggle").text( 'Show overlay');
+    $("#su-wayback-m-toolbar-info").toggle();
+    $("#su-wayback-toolbar-mode").val($("#su-wayback-m-visibility-toggle").text());
+  }
 
   var years_json={};
   var months_json={};
   var days_json={};
   
 
-    var timemap_str = "<%=encodedGraph%>"
-
-
+  var timemap_str = "<%=encodedGraph%>"
   var years_list = timemap_str.split("_");
   
   for(var i=2;i<years_list.length;i++){
@@ -358,8 +378,8 @@ function sumDigitString(digits){
   }
        
 
-    var freq_class;
-    var months = [ "January", "February", "March", "April", "May", "June", 
+  var freq_class;
+  var months = [ "January", "February", "March", "April", "May", "June", 
                    "July", "August", "September", "October", "November", "December" ];
 
  
@@ -511,18 +531,24 @@ function sumDigitString(digits){
                 <%= fmt.format("ToolBar.curYearText",data.curResult.getCaptureDate()) %>
               </span>
             </div>
+
+
+
+
             <div style="float: right;">
               <span>
+                  <form action="/" method="post" id="su-wayback-prevNext-form" >
+                    <input id="su-wayback-toolbar-mode" type="hidden"  name="su-wayback-toolbar-mode" value="test"/>
 
               <%if(data.prevResult == null) { %>
                     
-                <img src="<%= staticPrefix %>images/toolbar/su-wayback-m-left-arrow.png" style="width: 14px; height: 14px; vertical-align: middle; margin-bottom: 3px; opacity: 0.6;">
-                          Previous capture
+                <img src="<%= staticPrefix %>images/toolbar/su-wayback-m-left-arrow.png" style="width: 14px; height: 14px; vertical-align: middle; margin-bottom: 3px; opacity: 0.2;">
+                         <span class="su-wayback-submit-link" style="color: #aaa; text-decoration: none; padding-right:6px; padding-left:6px;"> Previous capture </span>
               <%} else {%>
-                <a href="<%= data.makeReplayURL(data.prevResult) %>" style="color: #555; text-decoration: none;"> 
                 <img src="<%= staticPrefix %>images/toolbar/su-wayback-m-left-arrow.png" style="width: 14px; height: 14px; vertical-align: middle; margin-bottom: 3px; opacity: 0.6;">
-                          Previous capture
-                </a>
+                    <input type="button" class="su-wayback-submit-link" value="Previous capture" onclick='su_wayback_submit_form("<%= data.makeReplayURL(data.prevResult)  %>")'></input>
+
+                          
               <%}%>
               
               </span>
@@ -530,20 +556,24 @@ function sumDigitString(digits){
               <span>
 
               <%if(data.nextResult == null) {%>
-                    Next capture
-                <img src="<%= staticPrefix %>images/toolbar/su-wayback-m-right-arrow.png" style="width: 14px; height: 14px; vertical-align: middle; margin-bottom: 3px; opacity: 0.6;">
+                     <span class="su-wayback-submit-link" style="color: #aaa; text-decoration: none; padding-right:6px; padding-left:6px;">Next capture</span>
+                    <img src="<%= staticPrefix %>images/toolbar/su-wayback-m-right-arrow.png" style="width: 14px; height: 14px; vertical-align: middle; margin-bottom: 3px; opacity: 0.2;">
                     
               <% } else {%>
                   
-                <a href="<%= data.makeReplayURL(data.nextResult) %>" style="color: #555; text-decoration: none;"> 
-                Next capture
-                <img src="<%= staticPrefix %>images/toolbar/su-wayback-m-right-arrow.png" style="width: 14px; height: 14px; vertical-align: middle; margin-bottom: 3px; opacity: 0.6;">
-                </a>
+                    <input type="button" class="su-wayback-submit-link" value="Next capture" onclick='su_wayback_submit_form("<%= data.makeReplayURL(data.nextResult)  %>")'></input>
+                    <img src="<%= staticPrefix %>images/toolbar/su-wayback-m-right-arrow.png" style="width: 14px; height: 14px; vertical-align: middle; margin-bottom: 3px; opacity: 0.6;">
+
                   
               <% }%>
-               
+               </form>
+
               </span>
             </div>
+
+
+
+
           </div>
           
 
