@@ -210,6 +210,8 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
     border:1px solid #bbb;
     overflow:hidden;
     word-break:normal;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
     box-sizing: border-box;
   }
   .su-wayback-m-years td > div, .su-wayback-m-months td > div, .su-wayback-m-days td > div {
@@ -488,7 +490,7 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
           text-align:center;
           font-size:12px!important;font-family:'Lucida Grande','Arial',sans-serif!important;">
 
-          <div id="su-wayback-m-sul-logo" style="padding: 6px 12px 12px; height: 36px; box-sizing: border-box;">
+          <div id="su-wayback-m-sul-logo" style="padding: 6px 12px 12px; height: 36px; -moz-box-sizing: border-box; -webkit-box-sizing; border-box; box-sizing: border-box;">
             <div style="width: 100%;">
               <span style="display: inline-block; float: left;">
                 <a href="http://library.stanford.edu" title="Stanford University Library homepage">
@@ -518,7 +520,7 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
               </span>
             </div>           
           </div>
-          <div style="float: left; height: 34px; width: 100%; margin:0; padding: 8px 20px; font-size: 14px; font-family:'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif!important; color: #555; background-color: #f7f7f7; box-sizing: border-box;">
+          <div style="float: left; height: 34px; width: 100%; margin:0; padding: 8px 20px; font-size: 14px; font-family:'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif!important; color: #555; background-color: #f7f7f7; -moz-box-sizing: border-box; -webkit-box-sizing; box-sizing: border-box;">
             <div style="float: left; margin-left: 30px;">
               <span>
                 Showing 
