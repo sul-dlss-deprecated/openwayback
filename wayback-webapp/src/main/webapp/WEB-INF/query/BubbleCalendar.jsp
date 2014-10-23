@@ -13,7 +13,6 @@
 <%@ page import="org.archive.wayback.partition.BubbleCalendarData" %>
 <%@ page import="org.archive.wayback.util.partition.Partition" %>
 <%@ page import="org.archive.wayback.util.StringFormatter" %>
-<jsp:include page="/WEB-INF/template/CookieJS.jsp" flush="true" />
 
 <%
 UIResults results = UIResults.extractCaptureQuery(request);
@@ -53,7 +52,6 @@ Calendar cal = BubbleCalendarData.getUTCCalendar();
 %>
 
 <jsp:include page="/WEB-INF/template/UI-header.jsp" flush="true" />
-<jsp:include page="/WEB-INF/template/CookieJS.jsp" flush="true" />
 
 <!-- Main page content -->
 <div id="main-container" class="calendar-results">

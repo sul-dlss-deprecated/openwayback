@@ -17,4 +17,8 @@ function SetAnchorDate(date) {
 function SetAnchorWindow(maxSeconds) {
   SetCookie("<%= WaybackRequest.REQUEST_ANCHOR_WINDOW %>",maxSeconds,365);
 }
+function SUWaybackGetCookie(cookieName){
+	var keyValue = document.cookie.match('(^|;) ?' + cookieName + '=([^;]*)(;|$)');
+    return keyValue ? keyValue[2] : null;
+}
 </script>

@@ -23,7 +23,10 @@
 %><%@ page import="org.archive.wayback.util.partition.PartitionSize"
 %><%@ page import="org.archive.wayback.util.StringFormatter"
 %><%@ page import="org.archive.wayback.util.url.UrlOperations"
-%><%
+%>
+<jsp:include page="/WEB-INF/template/CookieJS.jsp" flush="true" />
+
+<%
 UIResults results = UIResults.extractReplay(request);
 WaybackRequest wbRequest = results.getWbRequest();
 ResultURIConverter uriConverter = results.getURIConverter();
@@ -32,10 +35,6 @@ StringFormatter fmt = wbRequest.getFormatter();
 String staticPrefix = results.getStaticPrefix();
 String queryPrefix = results.getQueryPrefix();
 String replayPrefix = results.getReplayPrefix();
-
-String toolbar_mode = (String)request.getParameter("su-wayback-toolbar-mode");
-System.out.println(toolbar_mode);
-
 
 String graphJspPrefix = results.getContextConfig("graphJspPrefix");
 if(graphJspPrefix == null) {
@@ -290,14 +289,6 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
     background-color: #993404;
     color: #f7f7f7;
   }
-  .su-wayback-submit-link {
-    background-color: transparent;
-    text-decoration: underline;
-    border: none;
-    color: #555;
-    cursor: pointer;
-    font-size: 14px; font-family:'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif!important; color: #555; background-color: #f7f7f7; 
-  }
 </style>  
 
 <!-- TODO: We should be able to remove js/disclaim-element.js 
@@ -323,25 +314,21 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
     return sum;
   }
 
-  function su_wayback_submit_form(action_url){
-    $("#su-wayback-prevNext-form").attr("action", action_url);
-    $("#su-wayback-prevNext-form").submit();
-    return true;
-  }
-
   $().ready(function(){
     // Stanford Wayback show/hide toggle
     $("#su-wayback-m-visibility-toggle").click(function() {
       $(this).text($(this).text() == 'Show overlay' ? 'Hide overlay' : 'Show overlay');
       $("#su-wayback-m-toolbar-info").toggle();
+      //$.cookie();
+      SetCookie("toogle_mode", $(this).text().substring(0,4),1);
       $("#su-wayback-toolbar-mode").val($(this).text());
       return false;
   });
 
-  if("<%=toolbar_mode%>" == "Show overlay"){
+  var toogle_mode = SUWaybackGetCookie("toogle_mode");
+  if(toogle_mode != null && toogle_mode == "Show"){
     $("#su-wayback-m-visibility-toggle").text( 'Show overlay');
     $("#su-wayback-m-toolbar-info").toggle();
-    $("#su-wayback-toolbar-mode").val($("#su-wayback-m-visibility-toggle").text());
   }
 
   var years_json={};
@@ -504,19 +491,16 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
                 <a href="<%= staticPrefix %>"  
                    title="Find out more about the Stanford Wayback Machine"
                   style="color: #ddd; text-decoration: none;">
-                    Stanford Wayback Home
-                </a>
+                    Stanford Wayback Home</a>
                 <span style="color: #bbb; padding: 4px;">|</span>
                 <!-- TODO: What is this page linked below? Does Nicholas have an idea for it? -->
                 <a href="#"
                     style="color: #ddd; text-decoration: none;">
-                    Wayback Info
-                </a>
+                    Wayback Info</a>
                 <span style="color: #bbb; padding: 4px;">|</span>
                 <a href="#" id="su-wayback-m-visibility-toggle"
                     style="color: #ddd; text-decoration: none;">
-                    Hide overlay
-                </a>
+                    Hide overlay</a>
               </span>
             </div>           
           </div>
@@ -535,22 +519,17 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
             </div>
 
 
-
-
-            <div style="float: right;">
+    <div style="float: right;">
               <span>
-                  <form action="/" method="post" id="su-wayback-prevNext-form" >
-                    <input id="su-wayback-toolbar-mode" type="hidden"  name="su-wayback-toolbar-mode" value="test"/>
 
               <%if(data.prevResult == null) { %>
                     
                 <img src="<%= staticPrefix %>images/toolbar/su-wayback-m-left-arrow.png" style="width: 14px; height: 14px; vertical-align: middle; margin-bottom: 3px; opacity: 0.2;">
-                         <span class="su-wayback-submit-link" style="color: #aaa; text-decoration: none; padding-right:6px; padding-left:6px;"> Previous capture </span>
+                       <span style="color: #aaa; text-decoration: none;">   Previous capture</span>
               <%} else {%>
+                <a href="<%= data.makeReplayURL(data.prevResult) %>" style="color: #555; text-decoration: none;"> 
                 <img src="<%= staticPrefix %>images/toolbar/su-wayback-m-left-arrow.png" style="width: 14px; height: 14px; vertical-align: middle; margin-bottom: 3px; opacity: 0.6;">
-                    <input type="button" class="su-wayback-submit-link" value="Previous capture" onclick='su_wayback_submit_form("<%= data.makeReplayURL(data.prevResult)  %>")'></input>
-
-                          
+                          Previous capture</a>
               <%}%>
               
               </span>
@@ -558,24 +537,20 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
               <span>
 
               <%if(data.nextResult == null) {%>
-                     <span class="su-wayback-submit-link" style="color: #aaa; text-decoration: none; padding-right:6px; padding-left:6px;">Next capture</span>
-                    <img src="<%= staticPrefix %>images/toolbar/su-wayback-m-right-arrow.png" style="width: 14px; height: 14px; vertical-align: middle; margin-bottom: 3px; opacity: 0.2;">
+                   <span style="color: #aaa; text-decoration: none;"> Next capture</span>
+                <img src="<%= staticPrefix %>images/toolbar/su-wayback-m-right-arrow.png" style="width: 14px; height: 14px; vertical-align: middle; margin-bottom: 3px; opacity: 0.2;">
                     
               <% } else {%>
                   
-                    <input type="button" class="su-wayback-submit-link" value="Next capture" onclick='su_wayback_submit_form("<%= data.makeReplayURL(data.nextResult)  %>")'></input>
-                    <img src="<%= staticPrefix %>images/toolbar/su-wayback-m-right-arrow.png" style="width: 14px; height: 14px; vertical-align: middle; margin-bottom: 3px; opacity: 0.6;">
-
+                <a href="<%= data.makeReplayURL(data.nextResult) %>" style="color: #555; text-decoration: none;"> 
+                Next capture
+                <img src="<%= staticPrefix %>images/toolbar/su-wayback-m-right-arrow.png" style="width: 14px; height: 14px; vertical-align: middle; margin-bottom: 3px; opacity: 0.6;">
+                </a>
                   
               <% }%>
-               </form>
-
+               
               </span>
             </div>
-
-
-
-
           </div>
           
 
