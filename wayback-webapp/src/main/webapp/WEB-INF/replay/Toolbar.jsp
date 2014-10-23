@@ -509,8 +509,7 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
               <span>
                 Showing 
                 <span style="text-decoration: underline;">
-                  <%= searchUrlSafe %>
-                </span> 
+                  <%= searchUrlSafe %></span> 
                 captured on
                 <%= fmt.format("ToolBar.curMonthText",data.curResult.getCaptureDate()) %>
                 <%= fmt.format("ToolBar.curDayText",data.curResult.getCaptureDate()) %>,
