@@ -16,9 +16,9 @@
         <div class="col-sm-3">
           <div class="thumbnail">
             <a href="19911206000000/http://slacvm.slac.stanford.edu/FIND/default.html">
-               <img alt="SLAC first webpage" src="/images/featured_sites/slac_1991.jpg">
+               <img alt="SLAC first web page" src="/images/featured_sites/slac_1991.jpg">
               <div class="caption">
-                <h3>SLAC first webpage</h3>
+                <h3>SLAC first web page</h3>
               </div>
             </a>
           </div>
@@ -27,9 +27,9 @@
           <div class="thumbnail">
             <a href="*/http://slacvm.slac.stanford.edu/FIND/slac.html">
 
-              <img alt="SLAC homepage 1992-1995 Timemap" src="/images/featured_sites/slac_1994.jpg">
+              <img alt="SLAC home page 1992-1995 Timemap" src="/images/featured_sites/slac_1994.jpg">
               <div class="caption">
-                <h3>SLAC homepage 1992-1995</h3>
+                <h3>SLAC home page 1992-1995</h3>
               </div>
             </a>
           </div>
@@ -37,9 +37,9 @@
         <div class="col-sm-3">
           <div class="thumbnail">
             <a href="*/http://www.slac.stanford.edu/">
-              <img alt="SLAC homepage 1995-1998 Timemap" src="/images/featured_sites/slac_1996.jpg">
+              <img alt="SLAC home page 1995-1998 Timemap" src="/images/featured_sites/slac_1996.jpg">
               <div class="caption">
-                <h3>SLAC homepage 1995-1999</h3>
+                <h3>SLAC home page 1995-1999</h3>
               </div>
             </a>
           </div>
@@ -47,9 +47,9 @@
         <div class="col-sm-3">
           <div class="thumbnail">
             <a href="19990104000000/http://www.slac.stanford.edu/">
-              <img alt="SLAC homepage 1999" src="/images/featured_sites/slac_1999.jpg">
+              <img alt="SLAC home page 1999" src="/images/featured_sites/slac_1999.jpg">
               <div class="caption">
-                <h3>SLAC homepage 1999</h3>
+                <h3>SLAC home page 1999</h3>
               </div>
             </a>
           </div>
