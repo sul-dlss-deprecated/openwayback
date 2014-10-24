@@ -25,7 +25,7 @@
         </div>
         <div class="col-sm-3">
           <div class="thumbnail">
-            <a href="*/http://slacvm.slac.stanford.edu/FIND/slac.html">
+            <a href="19940201000000*/http://slacvm.slac.stanford.edu/FIND/slac.html">
 
               <img alt="SLAC home page 1992-1995 Timemap" src="/images/featured_sites/slac_1994.jpg">
               <div class="caption">
@@ -36,7 +36,7 @@
         </div>
         <div class="col-sm-3">
           <div class="thumbnail">
-            <a href="*/http://www.slac.stanford.edu/">
+            <a href="19970201000000*/http://www.slac.stanford.edu/">
               <img alt="SLAC home page 1995-1998 Timemap" src="/images/featured_sites/slac_1996.jpg">
               <div class="caption">
                 <h3>SLAC home page 1995-1999</h3>
