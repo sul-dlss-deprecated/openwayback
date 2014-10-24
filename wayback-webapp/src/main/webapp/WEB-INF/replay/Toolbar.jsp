@@ -430,8 +430,10 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
       // convert day value to int from string
       determineFrequencyClass(parseInt(day_value, 10));
       var day_label = i + 1; // adjust for zero-based index; days start with 1
+      var day_2_digits_label = ("0"+day_label).slice(-2);
+      var month_2_digits_label = ("0"+target_month).slice(-2);
       if (freq_class.indexOf("captures")>=0) {
-        var cell = $('<td class="su-wayback-m-frequency ' + freq_class + '" data-toggle="tooltip" data-placement="top" data-container="body" data-original-title="' + month_label + " " + day_label + ", " + target_year + ': ' + day_value +  ' captures" title=""><a href="<%= replayPrefix %>'+target_year+target_month+day_label+'120000/'+'<%=searchUrlSafe%>" style="z-index: 100001;"><div style="opacity: 0;">&nbsp;</div></a></td>');
+        var cell = $('<td class="su-wayback-m-frequency ' + freq_class + '" data-toggle="tooltip" data-placement="top" data-container="body" data-original-title="' + month_label + " " + day_label + ", " + target_year + ': ' + day_value +  ' captures" title=""><a href="<%= replayPrefix %>'+target_year+month_2_digits_label+day_2_digits_label+'120000/'+'<%=searchUrlSafe%>" style="z-index: 100001;"><div style="opacity: 0;">&nbsp;</div></a></td>');
       } else {
           var cell = $('<td class="su-wayback-m-frequency ' + freq_class + '"><div style="opacity: 0;">&nbsp;</div></td>');
       }
