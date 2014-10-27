@@ -40,7 +40,7 @@ StringFormatter fmt = results.getWbRequest().getFormatter();
       </div>
       
       <div class="no-results-suggestions">
-        <p><%= fmt.format(e.getMessageKey(),e.getMessage()) %></p>
+        <p><%=fmt.escapeHtml( fmt.format(e.getMessageKey(),e.getMessage()) )%></p>
 
         <%
         if(e instanceof ResourceNotInArchiveException) {
