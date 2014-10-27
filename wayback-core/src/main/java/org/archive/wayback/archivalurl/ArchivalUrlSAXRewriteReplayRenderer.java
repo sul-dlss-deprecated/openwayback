@@ -157,7 +157,7 @@ public class ArchivalUrlSAXRewriteReplayRenderer implements ReplayRenderer {
 		// transform the original headers according to our headerProcessor:
 		Map<String,String> headers = HttpHeaderOperation.processHeaders(
 				httpHeadersResource, result, uriConverter, httpHeaderProcessor);
-
+		
 		// prepare several objects for the parse:
 
 		// a JSPExecutor:
@@ -197,6 +197,9 @@ public class ArchivalUrlSAXRewriteReplayRenderer implements ReplayRenderer {
 		headers.put(HttpHeaderOperation.HTTP_LENGTH_HEADER, 
 				String.valueOf(utf8Bytes.length));
 		headers.put(TextReplayRenderer.GUESSED_CHARSET_HEADER, charSet);
+		
+		// Add X-UA-Compatible header to enforce IE to render the page with latest standard
+		headers.put("X-UA-Compatible", "IE=edge");
 
 		// send back the headers:
 		HttpHeaderOperation.sendHeaders(headers, httpResponse);

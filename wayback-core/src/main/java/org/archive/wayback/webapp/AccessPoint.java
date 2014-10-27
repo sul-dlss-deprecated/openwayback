@@ -224,7 +224,7 @@ implements ShutdownListener {
 		String translatedQ = "/" + translateRequestPathQuery(httpRequest);
 
 		WaybackRequest wbRequest = new WaybackRequest();
-//			wbRequest.setContextPrefix(getUrlRoot());
+//		wbRequest.setContextPrefix(getUrlRoot());
 		wbRequest.setAccessPoint(this);
 		wbRequest.extractHttpRequestInfo(httpRequest);
 		UIResults uiResults = new UIResults(wbRequest,uriConverter);

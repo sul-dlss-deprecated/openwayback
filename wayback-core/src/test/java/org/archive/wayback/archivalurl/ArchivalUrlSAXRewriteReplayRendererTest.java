@@ -150,6 +150,8 @@ public class ArchivalUrlSAXRewriteReplayRendererTest extends TestCase {
         response.setHeader("Content-Length", Integer.toString(payloadBytes.length));
         response.setHeader(TextReplayRenderer.GUESSED_CHARSET_HEADER, "UTF-8");
         response.setHeader("Content-Type", "text/html");
+        response.setHeader("X-UA-Compatible", "IE=edge");
+
         response.setHeader(EasyMock.matches("X-Archive-Orig-.*"), EasyMock.<String>notNull());
         EasyMock.expectLastCall().anyTimes();
         
@@ -193,6 +195,7 @@ public class ArchivalUrlSAXRewriteReplayRendererTest extends TestCase {
         response.setHeader("Content-Length", Integer.toString(payloadBytes.length));
         response.setHeader(TextReplayRenderer.GUESSED_CHARSET_HEADER, "UTF-8");
         response.setHeader("Content-Type", "text/html");
+        response.setHeader("X-UA-Compatible", "IE=edge");
         response.setHeader(EasyMock.matches("X-Archive-Orig-.*"), EasyMock.<String>notNull());
         EasyMock.expectLastCall().anyTimes();
         

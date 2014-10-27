@@ -1,3 +1,5 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <%@ page import="org.archive.wayback.core.WaybackRequest" %>
 <%@ page import="org.archive.wayback.core.UIResults" %>
 <%@ page import="org.archive.wayback.util.StringFormatter" %>
@@ -12,7 +14,6 @@ String queryPrefix = results.getQueryPrefix();
 String replayPrefix = results.getReplayPrefix();
 
 %>
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
