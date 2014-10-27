@@ -495,8 +495,7 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
                   style="color: #ddd; text-decoration: none;">
                     Stanford Wayback Home</a>
                 <span style="color: #bbb; padding: 4px;">|</span>
-                <!-- TODO: What is this page linked below? Does Nicholas have an idea for it? -->
-                <a href="#"
+                <a href="https://library.stanford.edu/projects/web-archiving/frequently-asked-questions#stanford_wayback"
                     style="color: #ddd; text-decoration: none;">
                     Wayback Info</a>
                 <span style="color: #bbb; padding: 4px;">|</span>
