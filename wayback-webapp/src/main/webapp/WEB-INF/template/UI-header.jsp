@@ -58,7 +58,7 @@ String replayPrefix = results.getReplayPrefix();
               <img alt="Stanford University Libraries" src="<%= staticPrefix %>images/SUL-Logo-white-text-h25.png">
             </a>
             <span id="report-problem">
-          	  <a href="/contact?from=%2Fabout" id="contact_us_link">Feedback</a>
+          	  <a href="mailto:sul-was-support@lists.stanford.edu" >Feedback</a>
           	</span>
           </div>
         </div>
