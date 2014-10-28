@@ -326,11 +326,15 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
   });
 
   var toogle_mode = SUWaybackGetCookie("toogle_mode");
-  if(toogle_mode != null && toogle_mode == "Show"){
-    $("#su-wayback-m-visibility-toggle").text( 'Show overlay');
-    $("#su-wayback-m-toolbar-info").toggle();
-  }
-
+  
+  if(toogle_mode == null || toogle_mode == '' ){
+	    $("#su-wayback-m-visibility-toggle").text( 'Show overlay');
+	    $("#su-wayback-m-toolbar-info").toggle();
+  } else if(toogle_mode != null && toogle_mode == "Show"){
+	    $("#su-wayback-m-visibility-toggle").text( 'Show overlay');
+	    $("#su-wayback-m-toolbar-info").toggle();
+  } 
+  
   var years_json={};
   var months_json={};
   var days_json={};
