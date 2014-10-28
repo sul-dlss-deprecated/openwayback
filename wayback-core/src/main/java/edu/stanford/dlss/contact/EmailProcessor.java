@@ -2,20 +2,16 @@ package edu.stanford.dlss.contact;
 import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.*;
-import javax.activation.*;
 
-public class EmailSessionBean {
-
-    private int port = 25;
-    private String host = "localhost";
-    private String from = "matt@example.com";
-    private boolean auth = true;
-
-    public void sendEmail(String to, String subject, String body) {
+public class EmailProcessor {
 
 
-        // Sender's email ID needs to be mentioned
-        String from = "web@gmail.com";
+    public boolean sendEmail(String from, String subject, String body) {
+    	if(!isValidEmail(from)){
+    		from = "admin@wayback.stanford.edu";
+    	}
+        
+        String to = "sul-was-support@lists.stanford.edu";
 
         // Assuming you are sending email from localhost
         String host = "localhost";
@@ -41,17 +37,33 @@ public class EmailSessionBean {
                                     new InternetAddress(to));
 
            // Set Subject: header field
-           message.setSubject("This is the Subject Line!");
+           message.setSubject(subject);
 
            // Now set the actual message
-           message.setText("This is actual message");
+           message.setText(body);
 
            // Send message
            Transport.send(message);
            System.out.println("Sent message successfully....");
-        }catch (MessagingException mex) {
+           return true;
+        }catch (Exception mex) {
            mex.printStackTrace();
+           return false;
         }
     	
+    }
+    
+    private boolean isValidEmail(String emailAddress){
+    	boolean isValid = false;
+    	if(emailAddress != null && emailAddress.length() > 5){
+			try {
+				InternetAddress internetAddress = new InternetAddress(emailAddress);
+				internetAddress.validate();
+				isValid = true;
+			} catch (AddressException e) {
+				System.out.println("The from email is not valid " + emailAddress);
+			}
+		}
+		return isValid;
     }
 }
