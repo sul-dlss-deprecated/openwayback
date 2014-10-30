@@ -487,7 +487,7 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
             <div style="width: 100%;">
               <span style="display: inline-block; float: left;">
                 <a href="http://library.stanford.edu" title="Stanford University Library homepage">
-                  <img src="<%= staticPrefix %>images/toolbar/SUL-Logo-white-text-h25.png" alt="Wayback Machine" width="297" height="25" border="0" />
+                  <img src="<%= staticPrefix %>images/toolbar/SUL-Logo-white-text-h25.png" alt="Stanford Web Archive Portal" width="297" height="25" border="0" />
                 </a>
               </span>
               <span class="su-wayback-m-toolbar-actions"
@@ -495,13 +495,13 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
                           font-size: 13px;
                           font-family:'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif;">
                 <a href="<%= staticPrefix %>"  
-                   title="Find out more about the Stanford Wayback Machine"
+                   title="Find out more about the Stanford Web Archive Portal"
                   style="color: #ddd; text-decoration: none;">
-                    Stanford Wayback Home</a>
+                    Home</a>
                 <span style="color: #bbb; padding: 4px;">|</span>
-                <a href="https://library.stanford.edu/projects/web-archiving/frequently-asked-questions#stanford_wayback"
+                <a href="https://library.stanford.edu/projects/web-archiving/frequently-asked-questions#stanford_swap"
                     style="color: #ddd; text-decoration: none;">
-                    Wayback Info</a>
+                    Help</a>
                 <span style="color: #bbb; padding: 4px;">|</span>
                 <a href="#" id="su-wayback-m-visibility-toggle"
                     style="color: #ddd; text-decoration: none;">
