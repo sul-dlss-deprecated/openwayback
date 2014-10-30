@@ -19,7 +19,7 @@ String replayPrefix = results.getReplayPrefix();
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Stanford Web Archiving Services: Stanford Wayback Machine</title>
+    <title>Stanford Web Archive Portal</title>
 
    <!-- Bootstrap sytles -->
     <link href="<%= staticPrefix %>css/bootstrap.min.css" rel="stylesheet">
@@ -140,7 +140,7 @@ String replayPrefix = results.getReplayPrefix();
           <div class="container">
             
             <div class="site-header-content">
-              <h1><a href="<%= staticPrefix %>">Stanford Web Archiving Services</a>
+              <h1><a href="<%= staticPrefix %>">Stanford Web Archive Portal</a>
                 <!-- Toggle icon used to show navbar, which is hidden when 
                     viewport is less than  768px wide -->
                 <div class="navbar navbar-default">
