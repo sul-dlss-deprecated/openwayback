@@ -473,7 +473,7 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
 </script>
 
 <style type="text/css"></style>
-<div id="wm-ipp" style="display:none; position:relative;padding:0;min-height:90px;min-width:800px; z-index:99999; margin: 0 30px;">
+<div id="wm-ipp" style="display:none; position:relative;padding:0;min-height:90px;min-width:800px; z-index:99999; margin: 0 10px;">
   <div id="wm-ipp-inside" 
     style="position:fixed;padding: 0!important;margin:0!important;
           width:96%;min-width:780px;
@@ -481,7 +481,7 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
           border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;
           background-color: #990000;
           text-align:center;
-          font-size:12px!important;font-family:'Lucida Grande','Arial',sans-serif!important;">
+          font-size:12px!important;font-family:'Lucida Grande','Arial',sans-serif!important; -moz-box-shadow: 3px 5px 5px #777; -webkit-box-shadow: 3px 5px 5px #777; box-shadow: 3px 5px 5px #777; border-collapse: separate;">
 
           <div id="su-wayback-m-sul-logo" style="padding: 6px 12px 12px; height: 36px; -moz-box-sizing: border-box; -webkit-box-sizing; border-box; box-sizing: border-box;">
             <div style="width: 100%;">
@@ -500,12 +500,8 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
                     Stanford Web Archive Portal Home</a>
                 <span style="color: #bbb; padding: 4px;">|</span>
                 <a href="https://library.stanford.edu/projects/web-archiving/frequently-asked-questions#stanford_swap"
-                    style="color: #ddd; text-decoration: none;">
+                    style="color: #ddd; text-decoration: none; margin-right: 12px;">
                     Help</a>
-                <span style="color: #bbb; padding: 4px;">|</span>
-                <a href="#" id="su-wayback-m-visibility-toggle"
-                    style="color: #ddd; text-decoration: none;">
-                    Hide overlay</a>
               </span>
             </div>           
           </div>
@@ -538,6 +534,11 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
               
               </span>
               <span style="color: #bbb; padding: 4px;">|</span>
+              <a href="#" id="su-wayback-m-visibility-toggle"
+                  style="color: #555; font-weight: bold; text-decoration: none;">
+                  Hide overlay</a>
+              <span style="color: #bbb; padding: 4px;">|</span>
+
               <span>
 
               <%if(data.nextResult == null) {%>
