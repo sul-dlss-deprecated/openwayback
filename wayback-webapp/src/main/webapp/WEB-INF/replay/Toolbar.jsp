@@ -497,7 +497,7 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
                 <a href="<%= staticPrefix %>"  
                    title="Find out more about the Stanford Web Archive Portal"
                   style="color: #ddd; text-decoration: none;">
-                    Home</a>
+                    Stanford Web Archive Portal Home</a>
                 <span style="color: #bbb; padding: 4px;">|</span>
                 <a href="https://library.stanford.edu/projects/web-archiving/frequently-asked-questions#stanford_swap"
                     style="color: #ddd; text-decoration: none;">
