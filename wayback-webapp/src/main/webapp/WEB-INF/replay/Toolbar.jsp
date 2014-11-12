@@ -617,7 +617,7 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
                         style="margin:0!important;padding:0!important;">
                         <input type="text" name="<%= WaybackRequest.REQUEST_URL %>" id="wmtbURL"
                                 value="<%= searchUrlSafe %>" maxlength="256"
-                                style="width:300px;font-size:11px;font-family:'Lucida Grande','Arial',sans-serif;"/>
+                                style="width:350px;font-size:11px;font-family:'Lucida Grande','Arial',sans-serif;"/>
                         <input type="hidden" name="<%= WaybackRequest.REQUEST_TYPE %>" value="<%= WaybackRequest.REQUEST_REPLAY_QUERY %>">
                         <input type="hidden" name="<%= WaybackRequest.REQUEST_DATE %>" value="<%= data.curResult.getCaptureTimestamp() %>">
                         <input type="submit" value="Browse history" style="font-size:11px;font-family:'Lucida Grande','Arial',sans-serif;margin-left:5px;"/>
