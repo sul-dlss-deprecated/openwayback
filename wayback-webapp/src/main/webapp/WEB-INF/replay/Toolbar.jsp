@@ -529,7 +529,7 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
             <div style="width: 100%;">
               <span style="display: inline-block; float: left;">
                 <a href="http://library.stanford.edu" title="Stanford University Library homepage">
-                  <img src="<%= staticPrefix %>images/toolbar/SUL-Logo-white-text-h25.png" alt="Stanford Web Archive Portal" width="297" height="25" border="0" />
+                  <img src="<%= staticPrefix %>images/toolbar/SUL-Logo-white-text-h25.png" alt="Stanford University Library homepage" width="297" height="25" border="0" />
                 </a>
               </span>
               <span class="su-wayback-m-toolbar-actions"
