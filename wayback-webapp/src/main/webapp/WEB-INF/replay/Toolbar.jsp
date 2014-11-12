@@ -42,7 +42,7 @@ if(graphJspPrefix == null) {
 }
 InteractiveToolBarData data = new InteractiveToolBarData(results);
 
-String searchUrl = 
+String searchUrl =
   UrlOperations.stripDefaultPortFromUrl(wbRequest.getRequestUrl());
 String searchUrlSafe = fmt.escapeHtml(searchUrl);
 String searchUrlJS = fmt.escapeJavaScript(searchUrl);
@@ -64,7 +64,7 @@ String encodedGraph = data.computeGraphString(yearFormatKey,imgWidth,imgHeight);
 String graphImgUrl = graphJspPrefix + "jsp/graph.jsp?graphdata=" + encodedGraph;
 System.out.println(encodedGraph);
 // TODO: this is archivalUrl specific:
-String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() + 
+String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
     "*/" + searchUrl);
 %>
 <!-- BEGIN WAYBACK TOOLBAR INSERT -->
@@ -78,6 +78,40 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
   #wm-ipp a:hover {
     text-decoration: underline !important;
   }
+  #wm-ipp div,
+  #wm-ipp span,
+  #wm-ipp h2,
+  #wm-ipp a,
+  #wm-ipp img,
+  #wm-ipp form,
+  #wm-ipp table,
+  #wm-ipp caption,
+  #wm-ipp tbody,
+  #wm-ipp tfoot,
+  #wm-ipp thead,
+  #wm-ipp tr,
+  #wm-ipp td,
+  #wm-ipp th {
+    background-color: none;
+    background-image: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font-style: normal;
+    font-weight: 500;
+    font: inherit;
+    vertical-align: baseline;
+  }
+  #wm-ipp table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  #wm-ipp input[type='text'] {
+    border: 2px inset;
+    padding: 1px;
+  }
+
   .su-wayback-m-tooltip {
     position: absolute;
     z-index: 1070;
@@ -196,13 +230,17 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
     margin-left: -12px;
   }
   @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700);
-  .su-wayback-m-years, .su-wayback-m-months, .su-wayback-m-days  {
+  #wm-ipp .su-wayback-m-years,
+  #wm-ipp .su-wayback-m-months,
+  #wm-ipp .su-wayback-m-days  {
     border-collapse:collapse;
     border-spacing:0;
     display: inline-block;
     vertical-align: bottom;
   }
-  .su-wayback-m-years td, .su-wayback-m-months td, .su-wayback-m-days td {
+  #wm-ipp .su-wayback-m-years td,
+  #wm-ipp .su-wayback-m-months td,
+  #wm-ipp .su-wayback-m-days td {
     font-family:Arial, sans-serif;
     font-size:14px;
     padding: 5px;
@@ -213,7 +251,9 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
     -moz-box-sizing: border-box;
     box-sizing: border-box;
   }
-  .su-wayback-m-years td > div, .su-wayback-m-months td > div, .su-wayback-m-days td > div {
+  #wm-ipp .su-wayback-m-years td > div,
+  #wm-ipp .su-wayback-m-months td > div,
+  #wm-ipp .su-wayback-m-days td > div {
     background: #555;
     border: 1px solid #ccc;
     border-radius: 6px;
@@ -221,9 +261,9 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
     height: 10px;
     margin: 0 auto;
   }
-  .su-wayback-m-years .su-wayback-m-year-heading,
-  .su-wayback-m-months .su-wayback-m-month-heading,
-  .su-wayback-m-days .su-wayback-m-day-heading {
+  #wm-ipp .su-wayback-m-years .su-wayback-m-year-heading,
+  #wm-ipp .su-wayback-m-months .su-wayback-m-month-heading,
+  #wm-ipp .su-wayback-m-days .su-wayback-m-day-heading {
     border:0;
     font-weight:bold;
     color:#9b9b9b;
@@ -231,10 +271,12 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
     font-size:11px;
     padding:0 0 3px;
   }
-  .su-wayback-m-days .su-wayback-m-day-heading {
+  #wm-ipp .su-wayback-m-days .su-wayback-m-day-heading {
     padding-left: 3px;
   }
-  .su-wayback-m-year-label, .su-wayback-m-month-label, .su-wayback-m-day-label  {
+  #wm-ipp .su-wayback-m-year-label,
+  #wm-ipp .su-wayback-m-month-label,
+  #wm-ipp .su-wayback-m-day-label  {
     display: inline-block;
     vertical-align: bottom;
     text-align: right;
@@ -253,12 +295,12 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
     background-color: #f7f7f7;
   }
 
-  .su-wayback-m-year-display {margin: 10px 10px 20px 10px;}
-  .su-wayback-m-month-display {margin: 10px 10px 20px 10px;}
-  .su-wayback-m-day-display {margin: 10px 10px 25px 10px;}
-  
+  #wm-ipp .su-wayback-m-year-display {margin: 10px 10px 20px 10px;}
+  #wm-ipp .su-wayback-m-month-display {margin: 10px 10px 20px 10px;}
+  #wm-ipp .su-wayback-m-day-display {margin: 10px 10px 25px 10px;}
+
   .su-wayback-m-month-display, .su-wayback-m-day-display {display: none;}
-  
+
   .su-wayback-m-month-heading, .su-wayback-m-month-label,
   .su-wayback-m-day-heading, .su-wayback-m-day-label {
     display: none;
@@ -268,7 +310,7 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
   }
   .su-wayback-m-month-heading.dec, .su-wayback-m-day-heading.thirty {text-align: right;}
 
-  .su-wayback-m-days .su-wayback-m-frequency {
+  #wm-ipp .su-wayback-m-days .su-wayback-m-frequency {
     padding: 0;
   }
   .su-wayback-m-frequency.su-wayback-m-low {
@@ -289,9 +331,9 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
     background-color: #993404;
     color: #f7f7f7;
   }
-</style>  
+</style>
 
-<!-- TODO: We should be able to remove js/disclaim-element.js 
+<!-- TODO: We should be able to remove js/disclaim-element.js
            but without it the overlay doesn't show.
            Probably related to JS code at very bottom of this page. -->
 <script type="text/javascript" src="<%= staticPrefix %>js/disclaim-element.js" ></script>
@@ -326,36 +368,36 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
   });
 
   var toogle_mode = SUWaybackGetCookie("toogle_mode");
-  
+
   if(toogle_mode == null || toogle_mode == '' ){
 	    $("#su-wayback-m-visibility-toggle").text( 'Show overlay');
 	    $("#su-wayback-m-toolbar-info").toggle();
   } else if(toogle_mode != null && toogle_mode == "Show"){
 	    $("#su-wayback-m-visibility-toggle").text( 'Show overlay');
 	    $("#su-wayback-m-toolbar-info").toggle();
-  } 
-  
+  }
+
   var years_json={};
   var months_json={};
   var days_json={};
-  
+
 
   var timemap_str = "<%=encodedGraph%>"
   var years_list = timemap_str.split("_");
-  
+
   for(var i=2;i<years_list.length;i++){
-    
+
     var year_record = years_list[i].split(":");
     var year = year_record[0];
     var year_digits = year_record[2];
-    
+
     var detailed_month_json={};
     var sum_month_json={};
     var sum_year=0;
-    
+
     var last_index = 0;
     for(var month=1;month<=12;month++){
-      
+
       no_of_days = daysInMonth(month,parseInt(year));
       month_digit = year_digits.substring(last_index,last_index+no_of_days);
       last_index=last_index+no_of_days;
@@ -369,13 +411,13 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
     months_json[year]=sum_month_json;
     years_json[year]=sum_year;
   }
-       
+
 
   var freq_class;
-  var months = [ "January", "February", "March", "April", "May", "June", 
+  var months = [ "January", "February", "March", "April", "May", "June",
                    "July", "August", "September", "October", "November", "December" ];
 
- 
+
   // Create cells for the YEARS visualization when the document is loaded.
   $.each(years_json, function(key, value) {
     determineFrequencyClass(value);
@@ -388,7 +430,7 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
     $("#su-wayback-m-year-data").append(cell);
     $("[data-toggle='tooltip']").tooltip();
   });
-  
+
   // When a year is clicked, create cells for the MONTHS visualization.
   $(document).on('click', '#su-wayback-m-year-data td.su-wayback-m-captures', function () {
     $("#su-wayback-m-year-data td > div").css("opacity", "0");
@@ -416,7 +458,7 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
         $("[data-toggle='tooltip']").tooltip();
     });
   });
-  
+
   // When a month is clicked, create cells for the DAYS visualization.
   $(document).on('click', '#su-wayback-m-month-data td.su-wayback-m-captures', function () {
     $("#su-wayback-m-month-data td > div").css("opacity", "0");
@@ -460,10 +502,10 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
     } else {
       freq_class = "";
     }
-    
+
     return freq_class;
   }
-  
+
   function getMonthLabel(month_value) {
     month_label = months[month_value - 1];
     return month_label;
@@ -474,7 +516,7 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
 
 <style type="text/css"></style>
 <div id="wm-ipp" style="display:none; position:relative;padding:0;min-height:90px;min-width:800px; z-index:99999; margin: 0 10px;">
-  <div id="wm-ipp-inside" 
+  <div id="wm-ipp-inside"
     style="position:fixed;padding: 0!important;margin:0!important;
           width:96%;min-width:780px;
           border: 2px solid #999; border-top:none;
@@ -494,7 +536,7 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
                     style="display: inline-block; float: right; padding-top: 3px;
                           font-size: 13px;
                           font-family:'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif;">
-                <a href="<%= staticPrefix %>"  
+                <a href="<%= staticPrefix %>"
                    title="Find out more about the Stanford Web Archive Portal"
                   style="color: #ddd; text-decoration: none;">
                     Stanford Web Archive Portal Home</a>
@@ -503,14 +545,14 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
                     style="color: #ddd; text-decoration: none; margin-right: 12px;">
                     Help</a>
               </span>
-            </div>           
+            </div>
           </div>
           <div style="float: left; height: 34px; width: 100%; margin:0; padding: 8px 20px; font-size: 14px; font-family:'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif!important; color: #555; background-color: #f7f7f7; -moz-box-sizing: border-box; -webkit-box-sizing; box-sizing: border-box;">
             <div style="float: left; margin-left: 30px;">
               <span>
-                Showing 
+                Showing
                 <span style="text-decoration: underline;">
-                  <%= searchUrlSafe %></span> 
+                  <%= searchUrlSafe %></span>
                 captured on
                 <%= fmt.format("ToolBar.curMonthText",data.curResult.getCaptureDate()) %>
                 <%= fmt.format("ToolBar.curDayText",data.curResult.getCaptureDate()) %>,
@@ -523,15 +565,15 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
               <span>
 
               <%if(data.prevResult == null) { %>
-                    
+
                 <img src="<%= staticPrefix %>images/toolbar/su-wayback-m-left-arrow.png" style="width: 14px; height: 14px; vertical-align: middle; margin-bottom: 3px; opacity: 0.2;">
                        <span style="color: #aaa; text-decoration: none;">   Previous capture</span>
               <%} else {%>
-                <a href="<%= data.makeReplayURL(data.prevResult) %>" style="color: #555; text-decoration: none;"> 
+                <a href="<%= data.makeReplayURL(data.prevResult) %>" style="color: #555; text-decoration: none;">
                 <img src="<%= staticPrefix %>images/toolbar/su-wayback-m-left-arrow.png" style="width: 14px; height: 14px; vertical-align: middle; margin-bottom: 3px; opacity: 0.6;">
                           Previous capture</a>
               <%}%>
-              
+
               </span>
               <span style="color: #bbb; padding: 4px;">|</span>
               <a href="#" id="su-wayback-m-visibility-toggle"
@@ -544,27 +586,27 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
               <%if(data.nextResult == null) {%>
                    <span style="color: #aaa; text-decoration: none;"> Next capture</span>
                 <img src="<%= staticPrefix %>images/toolbar/su-wayback-m-right-arrow.png" style="width: 14px; height: 14px; vertical-align: middle; margin-bottom: 3px; opacity: 0.2;">
-                    
+
               <% } else {%>
-                  
-                <a href="<%= data.makeReplayURL(data.nextResult) %>" style="color: #555; text-decoration: none;"> 
+
+                <a href="<%= data.makeReplayURL(data.nextResult) %>" style="color: #555; text-decoration: none;">
                 Next capture
                 <img src="<%= staticPrefix %>images/toolbar/su-wayback-m-right-arrow.png" style="width: 14px; height: 14px; vertical-align: middle; margin-bottom: 3px; opacity: 0.6;">
                 </a>
-                  
+
               <% }%>
-               
+
               </span>
             </div>
           </div>
-          
 
-    <table id="su-wayback-m-toolbar-info" 
+
+    <table id="su-wayback-m-toolbar-info"
            style="border-collapse:collapse;margin: 0 0;width:100%;
-                  border-top: 2px solid #bbb; 
+                  border-top: 2px solid #bbb;
                   border-bottom-left-radius: 9px; border-bottom-right-radius: 9px;
                   background-color: #eee;">
-      <tbody>     
+      <tbody>
       <tr>
         <td style="padding:0!important;text-align:center;vertical-align:top;width:100%;">
           <table style="border-collapse:collapse;margin:0 auto;padding:0;">
@@ -573,7 +615,7 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
                 <td style="padding: 20px 0 0; text-align:center" colspan="2">
                   <form target="_top" method="get" action="<%= queryPrefix %>query" name="wmtb" id="wmtb"
                         style="margin:0!important;padding:0!important;">
-                        <input type="text" name="<%= WaybackRequest.REQUEST_URL %>" id="wmtbURL" 
+                        <input type="text" name="<%= WaybackRequest.REQUEST_URL %>" id="wmtbURL"
                                 value="<%= searchUrlSafe %>" maxlength="256"
                                 style="width:300px;font-size:11px;font-family:'Lucida Grande','Arial',sans-serif;"/>
                         <input type="hidden" name="<%= WaybackRequest.REQUEST_TYPE %>" value="<%= WaybackRequest.REQUEST_REPLAY_QUERY %>">
@@ -589,7 +631,7 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
                      Captured
                       <a href="<%= starLink %>" style="color: #333; text-decoration: none;"><%= data.getResultCount() %> times</a>
                      between
-                     
+
 
                      <a href="<%=  data.firstResultReplayUrl  %>" style="color: #333; text-decoration: none;"><%= fmt.format("{0,date,MMMM d, yyyy}",data.getFirstResultDate() )%></a>
                      and
@@ -676,11 +718,11 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
   </table>
 
   <script>
-  
+
 
 
   </script>
-  
+
   </div> <!-- end #wm-ipp-inside -->
 </div> <!-- end #wm-ipp -->
 
