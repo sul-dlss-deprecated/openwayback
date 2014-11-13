@@ -92,8 +92,7 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
   #wm-ipp tr,
   #wm-ipp td,
   #wm-ipp th {
-    background-color: none;
-    background-image: none;
+    background: none;
     margin: 0;
     padding: 0;
     border: 0;
@@ -117,8 +116,6 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
     z-index: 1070;
     display: block;
     visibility: visible;
-    font-size: 12px;
-    line-height: 1.4;
     opacity: 0;
     filter: alpha(opacity=0);
   }
@@ -215,6 +212,8 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
     z-index: 100000;
   }
   .su-wayback-m-tooltip-inner {
+    font-size: 11px;
+    line-height: 1.4;
     background-color: #990000;
     border: 1px solid #000; border: 0;
     color: #f7f7f7;
@@ -265,11 +264,12 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
   #wm-ipp .su-wayback-m-months .su-wayback-m-month-heading,
   #wm-ipp .su-wayback-m-days .su-wayback-m-day-heading {
     border:0;
-    font-weight:bold;
-    color:#9b9b9b;
-    text-align:left;
-    font-size:11px;
-    padding:0 0 3px;
+    font-weight: bold;
+    color: #9b9b9b;
+    text-align: left;
+    font-size: 11px;
+    padding: 0 0 3px;
+    letter-spacing: 0;
   }
   #wm-ipp .su-wayback-m-days .su-wayback-m-day-heading {
     padding-left: 3px;
@@ -287,9 +287,9 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
     text-transform: uppercase;
     width: 50px;
   }
-  .su-wayback-m-years .su-wayback-m-frequency,
-  .su-wayback-m-months .su-wayback-m-frequency,
-  .su-wayback-m-days .su-wayback-m-frequency {
+  #wm-ipp .su-wayback-m-years .su-wayback-m-frequency,
+  #wm-ipp .su-wayback-m-months .su-wayback-m-frequency,
+  #wm-ipp .su-wayback-m-days .su-wayback-m-frequency {
     height: 24px;
     width: 24px;
     background-color: #f7f7f7;
@@ -305,29 +305,29 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
   .su-wayback-m-day-heading, .su-wayback-m-day-label {
     display: none;
   }
-  .su-wayback-m-months .su-wayback-m-month-heading {
+  #wm-ipp .su-wayback-m-months .su-wayback-m-month-heading {
     padding-left: 3px;
   }
-  .su-wayback-m-month-heading.dec, .su-wayback-m-day-heading.thirty {text-align: right;}
+  #wm-ipp .su-wayback-m-month-heading.dec, .su-wayback-m-day-heading.thirty {text-align: right;}
 
   #wm-ipp .su-wayback-m-days .su-wayback-m-frequency {
     padding: 0;
   }
-  .su-wayback-m-frequency.su-wayback-m-low {
+  #wm-ipp .su-wayback-m-frequency.su-wayback-m-low {
     background-color: #fee391;
   }
-  .su-wayback-m-frequency.su-wayback-m-low-medium {
+  #wm-ipp .su-wayback-m-frequency.su-wayback-m-low-medium {
     background-color: #fec44f;
   }
-  .su-wayback-m-frequency.su-wayback-m-medium {
+  #wm-ipp .su-wayback-m-frequency.su-wayback-m-medium {
     background-color: #fe9929;
     color: #f7f7f7;
   }
-  .su-wayback-m-frequency.su-wayback-m-medium-high {
+  #wm-ipp .su-wayback-m-frequency.su-wayback-m-medium-high {
     background-color: #d95f0e;
     color: #f7f7f7;
   }
-  .su-wayback-m-frequency.su-wayback-m-high {
+  #wm-ipp .su-wayback-m-frequency.su-wayback-m-high {
     background-color: #993404;
     color: #f7f7f7;
   }
@@ -515,7 +515,7 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
 </script>
 
 <style type="text/css"></style>
-<div id="wm-ipp" style="display:none; position:relative;padding:0;min-height:90px;min-width:800px; z-index:99999; margin: 0 10px;">
+<div id="wm-ipp" style="display:none; position:relative;padding:0;min-height:76px;min-width:800px; z-index:99999; margin: 0 10px;">
   <div id="wm-ipp-inside"
     style="position:fixed;padding: 0!important;margin:0!important;
           width:96%;min-width:780px;
@@ -617,7 +617,7 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
                         style="margin:0!important;padding:0!important;">
                         <input type="text" name="<%= WaybackRequest.REQUEST_URL %>" id="wmtbURL"
                                 value="<%= searchUrlSafe %>" maxlength="256"
-                                style="width:350px;font-size:11px;font-family:'Lucida Grande','Arial',sans-serif;"/>
+                                style="width:350px; padding: 2px 6px; font-size:12px;font-family:'Lucida Grande','Arial',sans-serif;"/>
                         <input type="hidden" name="<%= WaybackRequest.REQUEST_TYPE %>" value="<%= WaybackRequest.REQUEST_REPLAY_QUERY %>">
                         <input type="hidden" name="<%= WaybackRequest.REQUEST_DATE %>" value="<%= data.curResult.getCaptureTimestamp() %>">
                         <input type="submit" value="Browse history" style="font-size:11px;font-family:'Lucida Grande','Arial',sans-serif;margin-left:5px;"/>
@@ -627,7 +627,7 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
               </tr>
               <tr>
                 <td>
-                  <h2 style="font-family: Arial,sans-serif; font-size: 15px; color: #777; margin-top: 20px; margin-bottom: 10px;">
+                  <h2 style="font-family: Arial,sans-serif; font-size: 15px; font-weight: bold; letter-spacing: 0; color: #777; margin-top: 20px; margin-bottom: 10px;">
                      Captured
                       <a href="<%= starLink %>" style="color: #333; text-decoration: none;"><%= data.getResultCount() %> times</a>
                      between
