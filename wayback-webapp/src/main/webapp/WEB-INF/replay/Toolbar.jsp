@@ -513,7 +513,16 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
 
 });
 </script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+  ga('create', 'UA-7219229-29', 'auto');
+  ga('send', 'pageview');
+
+</script>
 <style type="text/css"></style>
 <div id="wm-ipp" style="display:none; position:relative;padding:0;min-height:76px;min-width:800px; z-index:99999; margin: 0 10px;">
   <div id="wm-ipp-inside"
