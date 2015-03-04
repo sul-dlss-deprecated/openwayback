@@ -105,6 +105,7 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() +
   #wm-ipp table {
     border-collapse: collapse;
     border-spacing: 0;
+    width: initial;
   }
   #wm-ipp input[type='text'] {
     border: 2px inset;
