@@ -324,6 +324,9 @@ table.results td {
 .calendar-results h2 a:visited {
   border-bottom: 1px dotted #2E2D29;
 }
+#wm-ipp-sparkline {
+  border-right: 1px solid #bbb;
+}
 #wbChart {
   margin-bottom: 50px;
 }
@@ -332,7 +335,7 @@ table.results td {
      year labels from wrapping.
      This might not be the best solution for the wrapping.
      Also, we might need to increase the width when years
-     after 2015 are added. */ 
+     after 2016 are added. */
   width: 1280px;
 }
 .wbChartThisContainer, .wbChartHover {
