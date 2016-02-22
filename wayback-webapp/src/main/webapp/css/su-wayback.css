@@ -331,9 +331,9 @@ table.results td {
   /* Explicitly setting a width to prevent
      year labels from wrapping.
      This might not be the best solution for the wrapping.
-     Also, we might need to increase the width when years 
-     after 2014 are added. */ 
-  width: 1225px;
+     Also, we might need to increase the width when years
+     after 2015 are added. */ 
+  width: 1280px;
 }
 .wbChartThisContainer, .wbChartHover {
   border-bottom: 4px solid #bbb;
@@ -391,7 +391,7 @@ table.results td {
 }
 .date.tooltip {
   padding-top: 3px;
-  /* position and opacity styles are to 
+  /* position and opacity styles are to
   override Bootstrap .tooltip styling */
   position: initial;
   opacity: 1;
