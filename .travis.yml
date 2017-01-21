@@ -4,10 +4,23 @@ sudo: false
 jdk:
   - openjdk6 # wayback machine in production is actually hotspot 1.6.0
   - openjdk7
-  - oraclejdk7
+#  - oraclejdk7
   - oraclejdk8
 
 matrix:
   fast_finish: true
   allow_failures:
     - jdk: oraclejdk8
+
+# install:
+#   - mvn test-compile -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+script:
+  - mvn test jacoco:report
+
+# Note:  currently no way to do this once for the entire matrix
+#  see https://github.com/travis-ci/travis-ci/issues/929
+after_success:
+  - mvn coveralls:report
+
+notifications:
+  email: false

@@ -1,6 +1,7 @@
 ## OpenWayback (Stanford Libraries)
 
 [![Build Status](https://travis-ci.org/sul-dlss/openwayback.svg?branch=master)](https://travis-ci.org/sul-dlss/openwayback)
+[![Coverage Status](https://coveralls.io/repos/github/sul-dlss/openwayback/badge.svg)](https://coveralls.io/github/sul-dlss/openwayback)
 [![Latest GitHub tagged version](https://badge.fury.io/gh/sul-dlss%2Fopenwayback.svg)](https://badge.fury.io/gh/sul-dlss%2Fopenwayback)
 
 Java application to query and access archived web material. This is the code for the Stanford Web Archiving Portal (SWAP).
