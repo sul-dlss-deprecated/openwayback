@@ -2,8 +2,8 @@
  *  This file is part of the Wayback archival access software
  *   (http://archive-access.sourceforge.net/projects/wayback/).
  *
- *  Licensed to the Internet Archive (IA) by one or more individual 
- *  contributors. 
+ *  Licensed to the Internet Archive (IA) by one or more individual
+ *  contributors.
  *
  *  The IA licenses this file to You under the Apache License, Version 2.0
  *  (the "License"); you may not use this file except in compliance with
@@ -45,19 +45,19 @@ import org.archive.wayback.webapp.AccessPoint;
 /**
  * Abstraction of all the data associated with a users request to the Wayback
  * Machine.
- * 
+ *
  * @author Brad Tofel
  * @version $Date$, $Revision$
  */
 public class WaybackRequest {
 
 	/**
-	 * indicates the number of requests per page, only makes sense for 
+	 * indicates the number of requests per page, only makes sense for
 	 * Capture/Url queries.
 	 */
 	private int resultsPerPage = 10;
 	/**
-	 * indicates the specific page of results to show, for paginated requests, 
+	 * indicates the specific page of results to show, for paginated requests,
 	 * only makes sense for Capture/Url queries.
 	 */
 	private int pageNum = 1;
@@ -66,7 +66,7 @@ public class WaybackRequest {
 	 */
 	private String contextPrefix = null;
 	/**
-	 * absolute URL prefix to the Server(webapp) which received this request 
+	 * absolute URL prefix to the Server(webapp) which received this request
 	 */
 	private String serverPrefix = null;
 	/**
@@ -77,8 +77,8 @@ public class WaybackRequest {
 	 * custom CaptureSearchResult Filter to use for this specific request. Can
 	 * be null, and is sometimes useful to allow an AccessPoint to have specific
 	 * and possibly variable filters. These filters relate specifically to
-	 * exclusion of results from the ResourceIndex. Compared to the 
-	 * resultFilters, if these filters redact all results, then an 
+	 * exclusion of results from the ResourceIndex. Compared to the
+	 * resultFilters, if these filters redact all results, then an
 	 * AccessControlException will be thrown.
 	 */
 	private ExclusionFilter exclusionFilter = null;
@@ -89,8 +89,8 @@ public class WaybackRequest {
 	 * and possibly variable filters.
 	 */
 	private ObjectFilterChain<CaptureSearchResult> resultFilters = null;
-	
-	
+
+
 	/**
 	 * StringFormatter object set up with the users specific Locale, and the
 	 * Wayback UI ResourceBundle prepared for use, simplifying UI generation
@@ -98,15 +98,15 @@ public class WaybackRequest {
 	 */
 	private StringFormatter formatter = null;
 	/**
-	 * generic String-to-String map of various request filters and type 
+	 * generic String-to-String map of various request filters and type
 	 * information. See constants below for keys & values.
 	 */
 	private HashMap<String,String> filters = new HashMap<String,String>();
-	
+
 
 	/*
 	 * **********************
-	 * REQUEST TYPE CONSTANTS 
+	 * REQUEST TYPE CONSTANTS
 	 * **********************
 	 */
 	/**
@@ -118,34 +118,34 @@ public class WaybackRequest {
 	public static final String REQUEST_TYPE = "type";
 	/**
 	 * REQUEST_TYPE option indicating a request for Replay of the Resource
-	 * matching REQUEST_URL closest in time to REQUEST_DATE 
+	 * matching REQUEST_URL closest in time to REQUEST_DATE
 	 */
 	public static final String REQUEST_REPLAY_QUERY = "replay";
 	/**
-	 * REQUEST_TYPE option indicating a query against the ResourceIndex for 
-	 * captures of URLs matching the REQUEST_URL 
+	 * REQUEST_TYPE option indicating a query against the ResourceIndex for
+	 * captures of URLs matching the REQUEST_URL
 	 */
 	public static final String REQUEST_CAPTURE_QUERY = "urlquery";
 	/**
-	 * REQUEST_TYPE option indicating a query against the ResourceIndex for 
-	 * summaries of URLs prefixed with the REQUEST_URL 
+	 * REQUEST_TYPE option indicating a query against the ResourceIndex for
+	 * summaries of URLs prefixed with the REQUEST_URL
 	 */
 	public static final String REQUEST_URL_QUERY = "prefixquery";
 	/*
 	 * **********************
-	 * /REQUEST TYPE CONSTANTS 
+	 * /REQUEST TYPE CONSTANTS
 	 * **********************
 	 */
-	
+
 
 	/*
 	 * ******************
-	 * URL/DATE CONSTANTS 
+	 * URL/DATE CONSTANTS
 	 * ******************
 	 */
 	/**
-	 * GUARANTEED PRESENT: Original(RAW) URL or URL prefix requested, before any 
-	 * cleanup/fixing 
+	 * GUARANTEED PRESENT: Original(RAW) URL or URL prefix requested, before any
+	 * cleanup/fixing
 	 */
 	public static final String REQUEST_URL = "url";
 
@@ -176,30 +176,30 @@ public class WaybackRequest {
 	public static final String REQUEST_START_DATE = "startdate";
 
 	/**
-	 * GUARANTEED PRESENT for Replay requests only. If present for Query 
+	 * GUARANTEED PRESENT for Replay requests only. If present for Query
 	 * requests, then it will be interpreted as a partial timestamp for missing
 	 * REQUEST_START_DATE and REQUEST_END_DATE fields.
 	 * Original (RAW/possibly partial) 14-digit timestamp of date requested for
-	 * Replay 
+	 * Replay
 	 */
 	public static final String REQUEST_DATE = "date";
 
 	/**
-	 * GUARANTEED PRESENT for Replay requests only, no meaning for Query 
+	 * GUARANTEED PRESENT for Replay requests only, no meaning for Query
 	 * requests.
 	 * Cleaned up version of original REQUEST_DATE, padded to 14 digits assuming
-	 * the 
+	 * the
 	 */
 	public static final String REQUEST_EXACT_DATE = "exactdate";
 
 	/**
-	 * Indicates user only wants results that exactly match the hostname within 
+	 * Indicates user only wants results that exactly match the hostname within
 	 * REQUEST_URL -- no canonicalization.
 	 */
 	public static final String REQUEST_EXACT_HOST_ONLY = "requestexacthost";
 
 	/**
-	 * Indicates user only wants results that were captured using the same 
+	 * Indicates user only wants results that were captured using the same
 	 * scheme as that specified in REQUEST_URL.
 	 */
 	public static final String REQUEST_EXACT_SCHEME_ONLY = "requestexactscheme";
@@ -208,129 +208,129 @@ public class WaybackRequest {
 	 * Indicates user requested content from proxied from the live web.
 	 */
 	public static final String REQUEST_IS_LIVE_WEB = "requestliveweb";
-	
+
 	/**
 	 * indicates positive value for any request boolean flag.
 	 */
 	public static final String REQUEST_YES = "yes";
-	
+
 	/**
 	 * indicates request for latest 'best' capture
 	 * This can be used to provide 'best' latest replay, skipping error captures, redirects
-	 * 
+	 *
 	 */
 	public static final String REQUEST_LATEST_BEST_REPLAY = "latestbestreplay";
 
 	/**
 	 * Replay-Only: indicates the date to tend towards when computing closest
-	 * matches within time. Used to prevent "time drift" while surfing from a 
+	 * matches within time. Used to prevent "time drift" while surfing from a
 	 * particular date.
 	 */
 	public final static String REQUEST_ANCHOR_DATE = "request.anchordate";
 
 	/**
-	 * Replay-Only: String representation of number of seconds. Used only in 
+	 * Replay-Only: String representation of number of seconds. Used only in
 	 * conjunction with REQUEST_ANCHOR_DATE, and indicates that documents more
-	 * than this many seconds should not be shown in a replay session. Useful 
+	 * than this many seconds should not be shown in a replay session. Useful
 	 * for QA purposes, to ensure that all content within a replay session was
 	 * crawled near a particular point, the REQUEST_ANCHOR_DATE.
 	 */
 	public final static String REQUEST_ANCHOR_WINDOW = "request.anchorwindow";
 	/*
 	 * ******************
-	 * /URL/DATE CONSTANTS 
+	 * /URL/DATE CONSTANTS
 	 * ******************
 	 */
 
 
 	/*
 	 * *******************************
-	 * OUTPUT TYPE CONSTANTS 
+	 * OUTPUT TYPE CONSTANTS
 	 * *******************************
 	 */
 	/**
-	 * Request: replay actual document or metadata for document: "yes" means 
+	 * Request: replay actual document or metadata for document: "yes" means
 	 * replay metadata only, not the actual document: (TimeLine mode)
 	 */
 	public static final String REQUEST_META_MODE = "metamode";
 	/**
-	 * Request: xml data requested 
+	 * Request: xml data requested
 	 */
 	public static final String REQUEST_XML_DATA = "xmldata";
 	/**
-	 * Request: CSS context requested 
+	 * Request: CSS context requested
 	 */
 	public static final String REQUEST_CSS_CONTEXT = "csscontext";
 	/**
-	 * Request: JS context requested 
+	 * Request: JS context requested
 	 */
 	public static final String REQUEST_JS_CONTEXT = "jscontext";
 	/**
-	 * Request: IMG context requested 
+	 * Request: IMG context requested
 	 */
 	public static final String REQUEST_IMAGE_CONTEXT = "imagecontext";
 	/**
-	 * Request: OBJECT or EMBED context requested 
+	 * Request: OBJECT or EMBED context requested
 	 */
 	public static final String REQUEST_OBJECT_EMBED_CONTEXT = "objectembedcontext";
 
 	/**
-	 * Request: Identity context requested (totally transparent) 
+	 * Request: Identity context requested (totally transparent)
 	 */
 	public static final String REQUEST_IDENTITY_CONTEXT = "identitycontext";
-		
+
 	/**
-	 * Request: Content should be wrapped in a frame 
+	 * Request: Content should be wrapped in a frame
 	 */
-	public static final String REQUEST_FRAME_WRAPPER_CONTEXT = 
+	public static final String REQUEST_FRAME_WRAPPER_CONTEXT =
 		"framewrappercontext";
-		
+
 	/**
 	 * Request: Display context for embedded metadata in an IFrame
 	 */
-	public static final String REQUEST_IFRAME_WRAPPER_CONTEXT = 
+	public static final String REQUEST_IFRAME_WRAPPER_CONTEXT =
 		"iframewrappercontext";
-	
+
 	/**
 	 * Request: Ajax request -- don't insert extra headers and footers
 	 */
 	public static final String REQUEST_AJAX_REQUEST = "requestajaxrequest";
-	
+
 	/**
 	 * Request: Memento Accept-Datetime used -- don't add extra redirects
 	 */
-	public static final String REQUEST_MEMENTO_ACCEPT_DATETIME = "requestmementoacceptdatetime";	
-	
+	public static final String REQUEST_MEMENTO_ACCEPT_DATETIME = "requestmementoacceptdatetime";
+
 	/**
 	 * Request: Memento Timemap Request
 	 */
 	public static final String REQUEST_MEMENTO_TIMEMAP = "requestmementotimemap";
-	
+
 	/**
 	 * Request: Memento Timegate Request
 	 */
 	public static final String REQUEST_MEMENTO_TIMEGATE = "requestmementotimegate";
-	
+
 	/**
-	 * Request: Charset detection mode 
+	 * Request: Charset detection mode
 	 */
 	public static final String REQUEST_CHARSET_MODE = "charsetmode";
-	
-	
+
+
 	/**
 	 * Request: Use timestamp as part of the search key
 	 */
 	public static final String REQUEST_TIMESTAMP_SEARCH_KEY = "timestampsearchkey";
-	
+
 	/*
 	 * *******************************
-	 * /OUTPUT TYPE CONSTANTS 
+	 * /OUTPUT TYPE CONSTANTS
 	 * *******************************
 	 */
 
 	/*
 	 * *******************************
-	 * CONTEXT & ACCESSPOINT CONSTANTS 
+	 * CONTEXT & ACCESSPOINT CONSTANTS
 	 * *******************************
 	 */
 	/**
@@ -338,18 +338,18 @@ public class WaybackRequest {
 	 */
 	public static final String REQUEST_WAYBACK_CONTEXT = "waybackcontext";
 	/**
-	 * the port the remote user connected to for this request  
+	 * the port the remote user connected to for this request
 	 */
 	public static final String REQUEST_WAYBACK_PORT = "waybackport";
 	/*
 	 * *******************************
-	 * /CONTEXT & ACCESSPOINT CONSTANTS 
+	 * /CONTEXT & ACCESSPOINT CONSTANTS
 	 * *******************************
 	 */
 
 	/*
 	 * *****************************
-	 * HTTP HEADER/REQUEST CONSTANTS 
+	 * HTTP HEADER/REQUEST CONSTANTS
 	 * *****************************
 	 */
 	/**
@@ -357,12 +357,12 @@ public class WaybackRequest {
 	 */
 	public static final String REQUEST_WAYBACK_HOSTNAME = "waybackhostname";
 	/**
-	 * incoming requests HTTP "Referer:" header, or null 
+	 * incoming requests HTTP "Referer:" header, or null
 	 */
 	public static final String REQUEST_REFERER_URL = "refererurl";
 	/**
 	 * Remote Address that connected to this webapp to create the request
-	 * string IP address: "127.0.0.1" 
+	 * string IP address: "127.0.0.1"
 	 */
 	public static final String REQUEST_REMOTE_ADDRESS = "remoteaddress";
 	/**
@@ -381,19 +381,19 @@ public class WaybackRequest {
 	 */
 	public static final String REQUEST_LOCALE_LANG = "requestlocalelang";
 	/**
-	 * Authorization Type: "BASIC", "SSL", or null if none. 
+	 * Authorization Type: "BASIC", "SSL", or null if none.
 	 * see HttpServletRequest.getAuthType()
 	 */
 	public static final String REQUEST_AUTH_TYPE = "requestauthtype";
 	/*
 	 * ***********************
-	 * /HTTP HEADER/REQUEST CONSTANTS 
+	 * /HTTP HEADER/REQUEST CONSTANTS
 	 * ***********************
 	 */
-	
+
 	/*
 	 * ***********************
-	 * TIMELINE MODE CONSTANTS 
+	 * TIMELINE MODE CONSTANTS
 	 * ***********************
 	 */
 	/**
@@ -426,10 +426,10 @@ public class WaybackRequest {
 	public static final String REQUEST_RESOLUTION_HOURS = "hours";
 	/*
 	 * ***********************
-	 * /TIMELINE MODE CONSTANTS 
+	 * /TIMELINE MODE CONSTANTS
 	 * ***********************
 	 */
-	
+
 	private static String UI_RESOURCE_BUNDLE_NAME = "WaybackUI";
 
 	private static String STD_LOGGED_IN_VER = "logged-in-ver";
@@ -437,9 +437,9 @@ public class WaybackRequest {
 	private static String STD_LOGGED_IN_USER = "logged-in-user";
 	private static String STD_PHP_SESSION_ID = "PHPSESSID";
 	private static String STD_J_SESSION_ID = "JSESSIONID";
-	
+
 	/**
-	 * set of filter keys that are not forwarded to subsequent paginated 
+	 * set of filter keys that are not forwarded to subsequent paginated
 	 * requests.
 	 */
 	private final static String standardHeaders[] = {
@@ -553,7 +553,7 @@ public class WaybackRequest {
 	/**
 	 * Construct an absolute URL that points to the root of the context that
 	 * received the request, including a trailing "/".
-	 * 
+	 *
 	 * @return String absolute URL pointing to the Context root where the
 	 *         request was received.
 	 * @deprecated use AccessPoint.setReplayPrefix or setQueryPrefix
@@ -575,7 +575,7 @@ public class WaybackRequest {
 
 	/**
 	 * @return an absolute String URL that will point to the root of the
-	 * server that is handling the request. 
+	 * server that is handling the request.
 	 * @deprecated use AccessPoint.get*Prefix
 	 */
 	public String getServerPrefix() {
@@ -617,7 +617,7 @@ public class WaybackRequest {
 		}
 		resultFilters.addFilter(resultFilter);
 	}
-	
+
 	/**
 	 * @return StringFormatter based on user request info
 	 */
@@ -661,14 +661,14 @@ public class WaybackRequest {
 			return -1;
 		}
 		return Integer.parseInt(value);
-	}	
+	}
 	private void setInt(String key, int value) {
 		put(key,String.valueOf(value));
-	}	
+	}
 	private boolean getBoolean(String key) {
 		String value = get(key);
 		return(value != null && value.equals(REQUEST_YES));
-	}	
+	}
 	/**
 	 * @param key
 	 * @return boolean, true if the request contains key 'key'
@@ -738,29 +738,33 @@ public class WaybackRequest {
      */
 	public void setRequestUrl(String urlStr) {
 
+		// Fixed based on https://github.com/iipc/openwayback/issues/398
+
 		// This looks a little confusing: We're trying to fixup an incoming
-		// request URL that starts with: 
-		//       "http:/www.archive.org"
+		// request URL that starts with:
+		//       "http(s):/www.archive.org"
 		// so it becomes:
-		//       "http://www.archive.org"
+		//       "http(s)://www.archive.org"
 		// (note the missing second "/" in the first)
-		// 
+		//
 		// if that is not the case, then see if the incoming scheme
 		// is known, adding an implied "http://" scheme if there doesn't appear
 		// to be a scheme..
 		// TODO: make the default "http://" configurable.
-		if (!urlStr.startsWith(UrlOperations.HTTP_SCHEME)) {
-	    	if(urlStr.startsWith("http:/")) {
-	    		urlStr = UrlOperations.HTTP_SCHEME + urlStr.substring(6);
-	    	} else {
-	    		if(UrlOperations.urlToScheme(urlStr) == null) {
-	    			urlStr = UrlOperations.HTTP_SCHEME + urlStr;
-	    		}
-	    	}
-	    }
-        put(REQUEST_URL, urlStr);
+		if (!urlStr.startsWith(UrlOperations.HTTP_SCHEME) && !urlStr.startsWith(UrlOperations.HTTPS_SCHEME)) {
+					if(urlStr.startsWith("http:/")) {
+						urlStr = UrlOperations.HTTP_SCHEME + urlStr.substring(6);
+					} else if(urlStr.startsWith("https:/")) {
+				urlStr = UrlOperations.HTTPS_SCHEME + urlStr.substring(7);
+			} else {
+					if(UrlOperations.urlToScheme(urlStr) == null) {
+						urlStr = UrlOperations.HTTP_SCHEME + urlStr;
+					}
+				}
+			}
+      put(REQUEST_URL, urlStr);
 	}
-	
+
 	public String getEndTimestamp() {
 		return get(REQUEST_END_DATE);
 	}
@@ -786,7 +790,7 @@ public class WaybackRequest {
 	public void setStartTimestamp(String timestamp) {
 		put(REQUEST_START_DATE,timestamp);
 	}
-	
+
 	public String getReplayTimestamp() {
 		return get(REQUEST_DATE);
 	}
@@ -826,7 +830,7 @@ public class WaybackRequest {
 	public boolean isLiveWebEmbedRequest() {
 		return getInt(REQUEST_IS_LIVE_WEB) == 2;
 	}
-	
+
 	public String getAnchorTimestamp() {
 		return get(REQUEST_ANCHOR_DATE);
 	}
@@ -880,7 +884,7 @@ public class WaybackRequest {
 	public boolean isCSSContext() {
 		return getBoolean(REQUEST_CSS_CONTEXT);
 	}
-	
+
 	public void setIMGContext(boolean isIMGContext) {
 		setBoolean(REQUEST_IMAGE_CONTEXT,isIMGContext);
 		// not setting foredContentType because 1) subtype is
@@ -897,7 +901,7 @@ public class WaybackRequest {
 	public boolean isObjectEmbedContext() {
 		return getBoolean(REQUEST_OBJECT_EMBED_CONTEXT);
 	}
-	
+
 	public void setIdentityContext(boolean isIdentityContext) {
 		setBoolean(REQUEST_IDENTITY_CONTEXT,isIdentityContext);
 	}
@@ -918,7 +922,7 @@ public class WaybackRequest {
 	public boolean isIFrameWrapperContext() {
 		return getBoolean(REQUEST_IFRAME_WRAPPER_CONTEXT);
 	}
-	
+
 	// TODO: this could be a native field.
 	private static final String REQUEST_FORCED_CONTENT_TYPE = "forced.content.type";
 
@@ -947,7 +951,7 @@ public class WaybackRequest {
 	public boolean isAjaxRequest() {
 		return getBoolean(REQUEST_AJAX_REQUEST);
 	}
-	
+
 	/**
 	 * checks if Memento response is enabled in the {@link AccessPoint}
 	 * for this request.
@@ -970,21 +974,21 @@ public class WaybackRequest {
 	public boolean isMementoTimemapRequest() {
 		return get(REQUEST_MEMENTO_TIMEMAP) != null;
 	}
-	
+
 	public void setMementoAcceptDatetime(boolean acceptDatetime) {
 		setBoolean(REQUEST_MEMENTO_ACCEPT_DATETIME, acceptDatetime);
 	}
 	public boolean hasMementoAcceptDatetime() {
 		return getBoolean(REQUEST_MEMENTO_ACCEPT_DATETIME);
 	}
-	
+
 	public void setMementoTimegate() {
 		setBoolean(REQUEST_MEMENTO_TIMEGATE, true);
 	}
 	public boolean isMementoTimegate() {
 		return getBoolean(REQUEST_MEMENTO_TIMEGATE);
 	}
-	
+
 
 	public void setCharsetMode(int mode) {
 		setInt(REQUEST_CHARSET_MODE,mode);
@@ -993,7 +997,7 @@ public class WaybackRequest {
 		int mode = getInt(REQUEST_CHARSET_MODE);
 		return (mode == -1) ? 0 : mode;
 	}
-	
+
 	public String getWaybackContext() {
 		return get(REQUEST_WAYBACK_CONTEXT);
 	}
@@ -1004,7 +1008,7 @@ public class WaybackRequest {
 		}
 		return Integer.parseInt(port);
 	}
-	
+
 	public String getWaybackHostname() {
 		return get(REQUEST_WAYBACK_HOSTNAME);
 	}
@@ -1023,7 +1027,7 @@ public class WaybackRequest {
 	public String getAuthType() {
 		return get(REQUEST_AUTH_TYPE);
 	}
-	
+
 	public String getTimelineResolution() {
 		return get(REQUEST_RESOLUTION);
 	}
@@ -1045,7 +1049,7 @@ public class WaybackRequest {
 	public void setTimelineHourResolution() {
 		put(REQUEST_RESOLUTION,REQUEST_RESOLUTION_HOURS);
 	}
-	
+
 	/**
 	 * Add timestamp as well as url key to optimize loading for only a certain time range
 	 * However, may not find all revisit records
@@ -1053,11 +1057,11 @@ public class WaybackRequest {
 	public void setTimestampSearchKey(boolean timestampSearchKey) {
 		setBoolean(REQUEST_TIMESTAMP_SEARCH_KEY, timestampSearchKey);
 	}
-	
+
 	public boolean isTimestampSearchKey() {
 		return getBoolean(REQUEST_TIMESTAMP_SEARCH_KEY);
 	}
-	
+
 	/**
 	 * Set the Locale for the request, which impacts UI Strings
 	 * @param l
@@ -1066,24 +1070,24 @@ public class WaybackRequest {
 		ResourceBundle b = ResourceBundle.getBundle(UI_RESOURCE_BUNDLE_NAME,l);
 		formatter = new StringFormatter(b,l);
 	}
-	
+
 	/**
 	 * extract REFERER, remote IP and authorization information from the
 	 * HttpServletRequest
-	 * 
+	 *
 	 * @param httpRequest
-	 * @throws BadQueryException 
+	 * @throws BadQueryException
 	 */
 	public void extractHttpRequestInfo(HttpServletRequest httpRequest) {
-		
+
 		putUnlessNull(REQUEST_REFERER_URL, httpRequest.getHeader("REFERER"));
-		
+
 		String remoteAddr = httpRequest.getHeader("X-Forwarded-For");
 		if (remoteAddr == null) {
 			remoteAddr = httpRequest.getRemoteAddr();
 		}
 		putUnlessNull(REQUEST_REMOTE_ADDRESS, remoteAddr);
-		
+
 		// Check for AJAX
 		String x_req_with = httpRequest.getHeader("X-Requested-With");
 		if (x_req_with != null) {
@@ -1093,7 +1097,7 @@ public class WaybackRequest {
 		} else if (this.getRefererUrl() != null && httpRequest.getParameter("ajaxpipe") != null) {
 			this.setAjaxRequest(true);
 		}
-		
+
 		if (isMementoEnabled()) {
 			// Check for Memento Accept-Datetime
 			String acceptDateTime = httpRequest.getHeader(MementoUtils.ACCEPT_DATETIME);
@@ -1101,14 +1105,14 @@ public class WaybackRequest {
 				this.setMementoAcceptDatetime(true);
 			}
 		}
-		
+
 		putUnlessNull(REQUEST_WAYBACK_HOSTNAME, httpRequest.getLocalName());
 		putUnlessNull(REQUEST_AUTH_TYPE, httpRequest.getAuthType());
 		putUnlessNull(REQUEST_REMOTE_USER, httpRequest.getRemoteUser());
-		
+
 		putUnlessNull(REQUEST_AUTHORIZATION,
 				httpRequest.getHeader(REQUEST_AUTHORIZATION));
-		putUnlessNull(REQUEST_WAYBACK_PORT, 
+		putUnlessNull(REQUEST_WAYBACK_PORT,
 				String.valueOf(httpRequest.getLocalPort()));
 		putUnlessNull(REQUEST_WAYBACK_CONTEXT, httpRequest.getContextPath());
 
@@ -1194,7 +1198,7 @@ public class WaybackRequest {
 		wbRequest.resultsPerPage = resultsPerPage;
 
 		wbRequest.pageNum = pageNum;
-		
+
 		wbRequest.contextPrefix = contextPrefix;
 		wbRequest.serverPrefix = serverPrefix;
 
@@ -1212,7 +1216,7 @@ public class WaybackRequest {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return A set containing all the keys in the request filter HashMap.
 	 * @deprecated
 	 */
@@ -1221,9 +1225,9 @@ public class WaybackRequest {
 	}
 
 	public boolean isBestLatestReplayRequest() {
-		return this.getBoolean(REQUEST_LATEST_BEST_REPLAY); 
+		return this.getBoolean(REQUEST_LATEST_BEST_REPLAY);
 	}
-	
+
 	public void setBestLatestReplayRequest() {
 		this.setBoolean(REQUEST_LATEST_BEST_REPLAY, true);
 	}
