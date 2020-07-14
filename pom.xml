@@ -232,7 +232,7 @@
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.7.8</version>
+				<version>0.8.5</version>
 				<executions>
 					<execution>
 						<id>default-prepare-agent</id>
@@ -520,7 +520,7 @@
 				<groupId>org.jacoco</groupId>
 				<artifactId>org.jacoco.agent</artifactId>
 				<classifier>runtime</classifier>
-				<version>0.7.8</version>
+				<version>0.8.5</version>
 				<scope>test</scope>
 			</dependency>
 		</dependencies>
