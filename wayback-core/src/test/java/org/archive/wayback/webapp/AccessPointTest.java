@@ -841,6 +841,7 @@ public class AccessPointTest extends TestCase {
         EasyMock.verify(httpResponse, resourceIndex, resourceStore, replay);
         
         assertTrue("handleRequest return value", r);
+        Locale.setDefault(Locale.ENGLISH);
     }
 
     /**
