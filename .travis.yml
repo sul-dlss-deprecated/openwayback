@@ -2,15 +2,7 @@ language: java
 sudo: false
 
 jdk:
-  - openjdk6 # wayback machine in production is actually hotspot 1.6.0
-  - openjdk7
-#  - oraclejdk7
-  - oraclejdk8
-
-matrix:
-  fast_finish: true
-  allow_failures:
-    - jdk: oraclejdk8
+  - openjdk8
 
 # install:
 #   - mvn test-compile -DskipTests=true -Dmaven.javadoc.skip=true -B -V
