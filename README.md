@@ -20,7 +20,7 @@ For more documentation on this code, see [the OpenWayback wiki][1].
 
 ## Deployment
 
-Deployment is via deployment artifacts created at [jenkinsqa](https://jenkinsqa.stanford.edu/job/Stanford%20OpenWayback/).  These artifacts are deployed to:
+Deployment is via deployment artifacts created via [sul-ci-prod (Jenkins)](https://sul-ci-prod.stanford.edu/job/SUL-DLSS/job/openwayback/).  These artifacts are deployed to:
 - to wayback-xxx VMs by puppet
 - was-robot VMs as part of capistrano [deployment tasks in `was_robot_suite`](https://github.com/sul-dlss/was_robot_suite/blob/master/config/deploy.rb#L47-L54). The deployed `was_robot_suite` houses the deployed files in the `jar/openwayback` directory.
 
