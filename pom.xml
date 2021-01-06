@@ -65,7 +65,7 @@
 
 	<ciManagement>
 		<system>travis-ci</system>
-		<url>https://travis-ci.org/sul-dlss/openwayback</url>
+		<url>https://travis-ci.com/sul-dlss/openwayback</url>
 	</ciManagement>
 
 	<mailingLists>
